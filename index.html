@@ -48,9 +48,7 @@
     --shadow-md: 0 10px 30px rgba(0,0,0,0.35);
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Noto Kufi Arabic', 'Poppins', sans-serif;
@@ -95,9 +93,7 @@
     animation: logoFloat 4s ease-in-out infinite;
   }
 
-  body.dark-mode .logo {
-    color: #ffffff;
-  }
+  body.dark-mode .logo { color: #ffffff; }
 
   .logo svg {
     width: 26px;
@@ -250,196 +246,395 @@
     box-shadow: 0 2px 6px rgba(0,200,150,0.3);
   }
 
-  /* ── NAVIGATION MENU ── */
+  /* ── MENU ── */
   .menu-toggle {
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(74,124,47,0.18);
-    border-radius: 13px;
-    background: rgba(255,255,255,0.72);
-    color: var(--green-dark);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(74,124,47,0.18);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.65);
+    color: var(--green-dark);
     cursor: pointer;
     flex-shrink: 0;
     transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
-    font-family: inherit;
   }
 
   .menu-toggle:hover {
     transform: translateY(-2px);
     background: var(--white);
-    box-shadow: 0 8px 20px rgba(45,80,22,.12);
+    box-shadow: 0 8px 18px rgba(45,80,22,.12);
+  }
+
+  .menu-toggle.active {
+    background: var(--green-cta);
+    color: #fff;
+    transform: rotate(3deg);
+  }
+
+  body.dark-mode .menu-toggle {
+    background: rgba(30,45,24,.75);
+    border-color: rgba(255,255,255,.12);
+    color: #d9f7cf;
   }
 
   .menu-toggle svg {
-    width: 21px;
-    height: 21px;
-    transition: transform .35s ease;
+    width: 20px;
+    height: 20px;
+    transition: transform .3s ease;
   }
 
   .menu-toggle.active svg {
     transform: rotate(90deg);
   }
 
-  body.dark-mode .menu-toggle {
-    background: rgba(30,45,24,.75);
-    border-color: rgba(255,255,255,.12);
-    color: #86efac;
-  }
-
-  .nav-menu-panel {
-    position: absolute;
-    top: calc(100% + 12px);
+  .site-menu {
+    position: fixed;
+    top: 78px;
     right: 5%;
-    width: min(390px, calc(100vw - 32px));
-    max-height: min(70vh, 560px);
-    padding: 14px;
+    width: min(360px, calc(100vw - 32px));
+    max-height: min(70vh, 620px);
     overflow-y: auto;
-    overscroll-behavior: contain;
-    background: rgba(255,255,255,.94);
+    padding: 12px;
+    background: rgba(255,255,255,.96);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(16,185,129,.16);
     border-radius: 22px;
-    box-shadow: 0 22px 55px rgba(26,70,30,.18);
+    box-shadow: 0 22px 55px rgba(20,60,25,.18);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-12px) scale(.97);
     transform-origin: top right;
-    transition:
-      opacity .28s ease,
-      transform .32s cubic-bezier(.2,.8,.2,1),
-      visibility .28s;
-    z-index: 120;
+    transition: opacity .3s ease, transform .35s cubic-bezier(.2,.8,.2,1), visibility .3s;
+    z-index: 150;
   }
 
-  html[dir="ltr"] .nav-menu-panel {
+  html[dir="ltr"] .site-menu {
     right: auto;
     left: 5%;
     transform-origin: top left;
   }
 
-  .nav-menu-panel.open {
+  body.dark-mode .site-menu {
+    background: rgba(24,37,19,.97);
+    border-color: rgba(134,239,172,.14);
+    box-shadow: 0 22px 55px rgba(0,0,0,.38);
+  }
+
+  .site-menu.open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
   }
 
-  body.dark-mode .nav-menu-panel {
-    background: rgba(18,24,14,.96);
-    border-color: rgba(134,239,172,.12);
-    box-shadow: 0 22px 55px rgba(0,0,0,.4);
-  }
-
-  .nav-menu-head {
+  .site-menu-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 6px 7px 12px;
-    border-bottom: 1px solid rgba(16,185,129,.12);
-    margin-bottom: 10px;
-  }
-
-  .nav-menu-title {
+    gap: 10px;
+    padding: 10px 12px 12px;
+    margin-bottom: 4px;
     color: var(--green-dark);
-    font-size: 1rem;
+    font-size: .95rem;
     font-weight: 700;
+    border-bottom: 1px solid rgba(16,185,129,.12);
   }
 
-  body.dark-mode .nav-menu-title {
+  body.dark-mode .site-menu-title {
     color: #86efac;
+    border-bottom-color: rgba(134,239,172,.12);
   }
 
-  .nav-menu-count {
-    min-width: 30px;
-    height: 26px;
-    padding: 0 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    background: rgba(16,185,129,.1);
-    color: var(--primary);
-    font-size: .72rem;
-    font-weight: 700;
-  }
-
-  .nav-menu-list {
+  .site-menu-list {
+    list-style: none;
     display: grid;
-    gap: 7px;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
   }
 
-  .nav-menu-item {
-    width: 100%;
-    border: 1px solid transparent;
-    border-radius: 14px;
-    padding: 10px 12px;
+  .site-menu-list a {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: transparent;
+    min-height: 44px;
+    padding: 9px 11px;
+    border-radius: 13px;
     color: var(--text-dark);
-    text-align: start;
-    cursor: pointer;
-    font-family: inherit;
-    transition:
-      transform .25s ease,
-      background .25s ease,
-      border-color .25s ease,
-      box-shadow .25s ease;
-    animation: menuItemIn .38s both;
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 600;
+    transition: transform .25s ease, background .25s ease, color .25s ease;
   }
 
-  .nav-menu-item:hover {
-    transform: translateX(-4px);
-    background: rgba(16,185,129,.08);
-    border-color: rgba(16,185,129,.15);
-    box-shadow: 0 7px 18px rgba(16,185,129,.08);
-  }
-
-  html[dir="ltr"] .nav-menu-item:hover {
-    transform: translateX(4px);
-  }
-
-  body.dark-mode .nav-menu-item {
+  body.dark-mode .site-menu-list a {
     color: #e8f5e1;
   }
 
-  .nav-menu-number {
-    width: 31px;
-    height: 31px;
-    flex: 0 0 31px;
+  .site-menu-list a:hover {
+    color: var(--green-cta);
+    background: rgba(16,185,129,.09);
+    transform: translateX(-4px);
+  }
+
+  html[dir="ltr"] .site-menu-list a:hover {
+    transform: translateX(4px);
+  }
+
+  .menu-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 6px;
     border-radius: 10px;
-    background: linear-gradient(
-      135deg,
-      rgba(16,185,129,.16),
-      rgba(74,124,47,.12)
-    );
-    color: var(--green-mid);
-    font-family: 'Poppins', 'Noto Kufi Arabic', sans-serif;
+    background: rgba(16,185,129,.10);
+    color: var(--green-cta);
     font-size: .72rem;
     font-weight: 700;
+    flex-shrink: 0;
   }
 
-  .nav-menu-item-text {
-    min-width: 0;
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,25,10,.18);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s;
+    z-index: 140;
+  }
+
+  .menu-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+    }
+
+    .site-menu {
+      top: 64px;
+      right: 4%;
+      width: min(360px, calc(100vw - 24px));
+      max-height: 72vh;
+    }
+
+    html[dir="ltr"] .site-menu {
+      left: 4%;
+      right: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-menu,
+    .menu-backdrop,
+    .menu-toggle,
+    .site-menu-list a {
+      transition: none !important;
+    }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    padding: 8.5rem 8% 0rem;
+    position: relative;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: .78rem;
-    font-weight: 600;
+    gap: 3rem;
   }
 
-  @keyframes menuItemIn {
+  .hero-divider {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    overflow: hidden;
+    z-index: 15;
+    line-height: 0;
+    margin-top: 0;
+    background: var(--green-cta);
+  }
+
+  .hero-divider svg {
+    display: none;
+  }
+
+  html[dir="ltr"] .hero-divider svg {
+    animation-direction: reverse;
+  }
+
+  .hero-divider .wave-back {
+    fill: var(--green-light);
+    opacity: .55;
+  }
+
+  .hero-divider .wave-front {
+    fill: var(--green-cta);
+  }
+
+  @keyframes waveDrift {
+    from { transform: translateY(0); }
+    to { transform: translateY(8px); }
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -18%;
+    right: -12%;
+    width: 65%;
+    height: 138%;
+    background: var(--mint-bg);
+    border-radius: var(--radius-blob);
+    animation: morphBlob 16s ease-in-out infinite alternate;
+    z-index: 1;
+  }
+
+  html[dir="ltr"] .hero::before {
+    right: auto;
+    left: -12%;
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    background: linear-gradient(120deg, rgba(16,185,129,0.12), rgba(74,124,47,0.18), rgba(16,185,129,0.12));
+    background-size: 220% 100%;
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(16,185,129,0.25);
+    box-shadow: 0 2px 10px rgba(16,185,129,0.08);
+    opacity: 0;
+    animation: fadeUp .7s .3s ease forwards, eyebrowSheen 5s linear infinite 1s;
+  }
+
+  body.dark-mode .eyebrow {
+    color: #86efac;
+  }
+
+  .eyebrow .eyebrow-icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    animation: eyebrowIconPulse 2.4s ease-in-out infinite;
+  }
+
+  .eyebrow .eyebrow-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
+
+  @keyframes eyebrowSheen {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 220% 50%; }
+  }
+
+  @keyframes eyebrowIconPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.18) rotate(-8deg); }
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.8rem, 5.5vw, 4rem);
+    line-height: 1.3;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    opacity: 0;
+    animation: fadeUp .7s .5s ease forwards;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  .hero-text h1 span {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+    cursor: default;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-cta));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: letterFloat 3.2s ease-in-out infinite, gradientShift 5s ease-in-out infinite;
+  }
+
+  body.dark-mode .hero-text h1 span {
+    background: linear-gradient(135deg, #ffffff, #86efac);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-text h1 span:hover {
+    animation-play-state: paused;
+    transform: translateY(-10px) scale(1.08) rotate(1deg);
+  }
+
+  @keyframes letterFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .hero-desc {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp .7s .7s ease forwards;
+  }
+
+  .cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp .7s .9s ease forwards;
+  }
+
+  @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(-7px);
+      transform: translateY(25px);
     }
     to {
       opacity: 1;
@@ -447,83 +642,301 @@
     }
   }
 
-  .nav-menu-empty {
-    padding: 22px 10px;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: .78rem;
-  }
-
-  /* ── SEARCH RESULT ── */
-  .search-result-count {
-    position: absolute;
-    top: calc(100% + 7px);
-    right: 15px;
-    background: var(--white);
-    color: var(--green-mid);
-    border: 1px solid rgba(16,185,129,.12);
-    border-radius: 50px;
-    padding: 4px 10px;
-    font-size: .68rem;
-    box-shadow: var(--shadow-sm);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-5px);
-    transition: all .25s ease;
-    z-index: 5;
-  }
-
-  .search-result-count.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  html[dir="ltr"] .search-result-count {
-    right: auto;
-    left: 15px;
-  }
-
-  .chapter-card.search-match {
-    animation: searchPulse .45s ease;
-  }
-
-  @keyframes searchPulse {
+  @keyframes morphBlob {
     0% {
-      transform: scale(.985);
-      opacity: .55;
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      border-radius: 40% 60% 45% 55% / 60% 40% 60% 40%;
+      transform: rotate(3deg) scale(1.02);
     }
     100% {
-      transform: scale(1);
-      opacity: 1;
+      border-radius: 55% 45% 60% 40% / 45% 55% 45% 55%;
+      transform: rotate(-3deg) scale(1);
     }
+  }
+
+  /* ── HERO VISUAL ── */
+  .hero-visual {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  .hero-visual img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 25px 30px rgba(45,80,22,.18));
+    animation: visualFloat 5s ease-in-out infinite;
+  }
+
+  @keyframes visualFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(1deg);
+    }
+  }
+
+  /* ── CHAPTERS ── */
+  .chapters-section {
+    position: relative;
+    z-index: 20;
+    background: var(--bg-chapters);
+    padding: 5rem 6% 6rem;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--green-dark);
+    margin-bottom: .8rem;
+  }
+
+  body.dark-mode .section-heading h2 {
+    color: #86efac;
+  }
+
+  .section-heading p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: auto;
+  }
+
+  .chapter-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(16,185,129,.08);
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+
+  .chapter-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-image-area {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: var(--green-pale);
+  }
+
+  .card-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+
+  .chapter-card:hover .card-image-area img {
+    transform: scale(1.06);
+  }
+
+  .card-chapter-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    padding: 6px 12px;
+    border-radius: 50px;
+    background: rgba(255,255,255,.92);
+    color: var(--green-dark);
+    font-size: .72rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  }
+
+  html[dir="ltr"] .card-chapter-tag {
+    right: auto;
+    left: 14px;
+  }
+
+  .card-content-box {
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title {
+    color: var(--green-dark);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: .65rem;
+  }
+
+  body.dark-mode .card-title {
+    color: #b8f2aa;
+  }
+
+  .card-desc {
+    color: var(--text-muted);
+    font-size: .82rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    flex: 1;
+  }
+
+  .card-footer-btn {
+    color: var(--green-cta);
+    font-size: .8rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+  }
+
+  .card-footer-btn::after {
+    content: '←';
+    transition: transform .3s ease;
+  }
+
+  html[dir="ltr"] .card-footer-btn::after {
+    content: '→';
+  }
+
+  .chapter-card:hover .card-footer-btn::after {
+    transform: translateX(-5px);
+  }
+
+  html[dir="ltr"] .chapter-card:hover .card-footer-btn::after {
+    transform: translateX(5px);
+  }
+
+  /* ── FOOTER ── */
+  .main-footer {
+    position: relative;
+    background: var(--bg-footer);
+    color: #e8f5e1;
+    padding: 4rem 6% 2rem;
+  }
+
+  .footer-grid {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-col h3 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col p,
+  .footer-col li,
+  .footer-col a {
+    color: rgba(232,245,225,.75);
+    font-size: .78rem;
+    line-height: 2;
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col a {
+    text-decoration: none;
+    transition: color .25s ease;
+  }
+
+  .footer-col a:hover {
+    color: #86efac;
+  }
+
+  .yellow-tag {
+    color: #d8ef66;
+    font-weight: 700;
+  }
+
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,.1);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: .72rem;
+    color: rgba(232,245,225,.65);
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     nav.navbar {
-      padding: .8rem 4%;
+      padding: .85rem 4%;
     }
 
     .search-container {
-      margin: 0 .7rem;
-      max-width: 360px;
+      margin: 0 1rem;
     }
 
-    .theme-switcher-container button,
-    .lang-switcher-container button {
-      padding: .3rem .55rem;
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 8rem 6% 3rem;
+      min-height: auto;
+    }
+
+    .hero::before {
+      width: 100%;
+      height: 70%;
+      top: 20%;
+      right: -25%;
+    }
+
+    html[dir="ltr"] .hero::before {
+      left: -25%;
+      right: auto;
+    }
+
+    .hero-visual {
+      min-height: 300px;
+    }
+
+    .chapters-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 768px) {
     nav.navbar {
       padding: .7rem 4%;
       gap: .5rem;
     }
 
     .logo {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
 
     .logo svg {
@@ -533,16 +946,15 @@
 
     .search-container {
       position: absolute;
-      top: calc(100% + 9px);
+      top: calc(100% + 8px);
       left: 4%;
       right: 4%;
-      width: auto;
       max-width: none;
       margin: 0;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-8px);
-      transition: all .3s ease;
+      transition: opacity .3s ease, transform .3s ease, visibility .3s;
     }
 
     .search-container.mobile-open {
@@ -555,37 +967,74 @@
       display: inline-flex;
     }
 
-    .nav-actions {
-      gap: .35rem;
-    }
-
     .theme-switcher-container button,
     .lang-switcher-container button {
-      padding: .28rem .5rem;
+      padding: .3rem .5rem;
       font-size: .68rem;
     }
 
-    .menu-toggle {
-      width: 38px;
-      height: 38px;
+    .hero {
+      padding: 7rem 5% 2rem;
+      gap: 1.5rem;
     }
 
-    .nav-menu-panel {
-      right: 4%;
-      left: 4%;
-      width: auto;
-      max-height: 65vh;
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 10vw, 3.2rem);
     }
 
-    html[dir="ltr"] .nav-menu-panel {
-      left: 4%;
-      right: 4%;
+    .hero-desc {
+      font-size: 1rem;
+    }
+
+    .hero-visual {
+      min-height: 240px;
+    }
+
+    .chapters-section {
+      padding: 3.5rem 5% 4rem;
+    }
+
+    .chapters-grid {
+      grid-template-columns: 1fr;
+      gap: 1.3rem;
+    }
+
+    .card-image-area {
+      height: 210px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
     }
   }
 
-  @media (max-width: 500px) {
-    .logo {
-      font-size: 1rem;
+  @media (max-width: 480px) {
+    .nav-actions {
+      gap: .3rem;
+    }
+
+    .menu-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+    }
+
+    .site-menu {
+      top: 64px;
+      right: 4%;
+      width: min(360px, calc(100vw - 24px));
+      max-height: 72vh;
+    }
+
+    html[dir="ltr"] .site-menu {
+      left: 4%;
+      right: auto;
     }
 
     .theme-switcher-container,
@@ -593,36 +1042,38 @@
       display: none;
     }
 
-    .nav-menu-panel {
-      border-radius: 18px;
-      padding: 11px;
+    .hero-text h1 {
+      font-size: 2.15rem;
+      gap: .35rem;
     }
 
-    .nav-menu-item {
-      padding: 9px 10px;
+    .hero-desc {
+      font-size: .9rem;
+      line-height: 1.8;
     }
 
-    .nav-menu-item-text {
-      font-size: .72rem;
-    }
-
-    .search-input {
+    .eyebrow {
       font-size: .78rem;
+      padding: 7px 13px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.65rem;
     }
   }
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <!-- NAVIGATION -->
 <nav class="navbar">
 
-  <a href="#" class="logo">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+  <a href="#top" class="logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 20V10"></path>
-      <path d="M12 10C8 10 5 7 5 3c4 0 7 3 7 7Z"></path>
-      <path d="M12 14c4 0 7-3 7-7-4 0-7 3-7 7Z"></path>
+      <path d="M12 10C12 6 15 3 19 3C19 7 16 10 12 10Z"></path>
+      <path d="M12 14C12 10 9 7 5 7C5 11 8 14 12 14Z"></path>
     </svg>
     <span>NovaPlant</span>
   </a>
@@ -630,48 +1081,75 @@
   <div class="search-container" id="search-container">
     <div class="search-wrapper">
       <input
+        type="text"
         id="search-bar"
         class="search-input"
-        type="search"
         placeholder="گەڕان بەدوای بەشەکاندا..."
         autocomplete="off"
       >
 
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
         <circle cx="11" cy="11" r="7"></circle>
-        <path d="m20 20-4-4"></path>
+        <path d="M20 20l-4-4"></path>
       </svg>
-
-      <div id="search-result-count" class="search-result-count"></div>
     </div>
   </div>
 
-  <div class="nav-actions">
+  <button
+    class="mobile-search-btn"
+    type="button"
+    onclick="toggleMobileSearch()"
+    aria-label="Search"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="M20 20l-4-4"></path>
+    </svg>
+  </button>
 
-    <button
-      class="mobile-search-btn"
-      type="button"
-      onclick="toggleMobileSearch()"
-      aria-label="Search"
-    >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="7"></circle>
-        <path d="m20 20-4-4"></path>
-      </svg>
-    </button>
+  <!-- MENU BUTTON -->
+  <button
+    class="menu-toggle"
+    id="menu-toggle"
+    onclick="toggleSiteMenu()"
+    aria-label="Menu"
+    aria-expanded="false"
+    type="button"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="4" y1="7" x2="20" y2="7"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="17" x2="20" y2="17"></line>
+    </svg>
+  </button>
+
+  <div class="menu-backdrop" id="menu-backdrop" onclick="closeSiteMenu()"></div>
+
+  <aside class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="site-menu-title">
+      <span id="site-menu-title-text">بەشەکانی وێبەکە</span>
+      <span class="menu-number">☰</span>
+    </div>
+
+    <ul class="site-menu-list" id="site-menu-list"></ul>
+  </aside>
+
+  <div class="nav-actions">
 
     <div class="theme-switcher-container">
       <button
-        id="theme-light-btn"
         class="theme-btn active"
+        id="theme-light-btn"
+        type="button"
         onclick="setTheme('light')"
       >
         ڕووناک
       </button>
 
       <button
-        id="theme-dark-btn"
         class="theme-btn"
+        id="theme-dark-btn"
+        type="button"
         onclick="setTheme('dark')"
       >
         تاریک
@@ -680,139 +1158,195 @@
 
     <div class="lang-switcher-container">
       <button
-        id="btn-ku"
         class="lang-btn active"
+        id="btn-ku"
+        type="button"
         onclick="changeLanguage('ku')"
       >
         کوردی
       </button>
 
       <button
-        id="btn-ar"
         class="lang-btn"
+        id="btn-ar"
+        type="button"
         onclick="changeLanguage('ar')"
       >
         عربي
       </button>
 
       <button
-        id="btn-en"
         class="lang-btn"
+        id="btn-en"
+        type="button"
         onclick="changeLanguage('en')"
       >
         EN
       </button>
     </div>
 
-    <!-- MENU BUTTON -->
-    <button
-      id="menu-toggle"
-      class="menu-toggle"
-      type="button"
-      onclick="toggleNavigationMenu()"
-      aria-expanded="false"
-      aria-controls="nav-menu-panel"
-      aria-label="Menu"
-    >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 7h16"></path>
-        <path d="M4 12h16"></path>
-        <path d="M4 17h16"></path>
-      </svg>
-    </button>
-
   </div>
-
-  <!-- MENU PANEL -->
-  <div
-    id="nav-menu-panel"
-    class="nav-menu-panel"
-    aria-hidden="true"
-  >
-    <div class="nav-menu-head">
-      <div id="nav-menu-title" class="nav-menu-title">
-        بەشەکانی پلاتفۆرم
-      </div>
-
-      <div id="nav-menu-count" class="nav-menu-count">
-        12
-      </div>
-    </div>
-
-    <div id="nav-menu-list" class="nav-menu-list"></div>
-  </div>
-
 </nav>
 
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div id="hero-eyebrow"></div>
+<section class="hero">
 
-    <h1 id="hero-title"></h1>
+  <div class="hero-text">
 
-    <p id="hero-desc-txt"></p>
+    <div class="eyebrow" id="hero-eyebrow">
+      <span class="eyebrow-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <path d="M12 21c4.5-4.3 7-8 7-12a7 7 0 1 0-14 0c0 4 2.5 7.7 7 12Z"></path>
+          <path d="M12 9v5"></path>
+          <path d="M9.5 11.5h5"></path>
+        </svg>
+      </span>
 
-    <a href="#chapters" class="hero-btn">
-      <span id="btn-txt"></span>
-    </a>
+      زانستی درەوشاوەی ڕووەک
+    </div>
+
+    <h1 id="hero-title">
+      NovaPlant
+    </h1>
+
+    <p class="hero-desc" id="hero-desc-txt">
+      پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان، توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.
+    </p>
+
+    <div class="cta-group">
+      <a href="#chapters" class="card-footer-btn" id="btn-txt">
+        دەست پێبکە
+      </a>
+    </div>
+
   </div>
+
+
+  <div class="hero-visual">
+
+    <img
+      src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?q=80&w=900"
+      alt="Plant"
+    >
+
+  </div>
+
 </section>
 
 
+<div class="hero-divider"></div>
+
+
 <!-- CHAPTERS -->
-<section id="chapters" class="chapters-section">
+<section class="chapters-section" id="chapters">
 
   <div class="section-heading">
-    <h2 id="sec-title"></h2>
-    <p id="sec-subtitle"></p>
+
+    <h2 id="sec-title">
+      بەشەکانی پلاتفۆرم
+    </h2>
+
+    <p id="sec-subtitle">
+      لێرەوە بڕوانە ناو کایە جیاوازەکانی زانستی ڕووەک و سەرچاوەکان
+    </p>
+
   </div>
 
-  <div id="grid-container" class="grid-container"></div>
+
+  <div class="chapters-grid" id="grid-container"></div>
 
 </section>
 
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="main-footer" id="site-footer">
 
-  <div class="footer-container">
+  <div class="footer-grid">
 
-    <div class="footer-column">
-      <h3 id="foot-title-col1"></h3>
+    <div class="footer-col">
 
-      <h4 id="foot-main-title-custom"></h4>
+      <h3 id="foot-title-col1">
+        پلاتفۆرم
+      </h3>
 
-      <p id="foot-desc-custom"></p>
+      <h2 id="foot-main-title-custom">
+        پلاتفۆرمی درەوشاوەی ڕووەک
+      </h2>
+
+      <p id="foot-desc-custom">
+        پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان، توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.
+      </p>
+
     </div>
 
-    <div class="footer-column">
-      <h3 id="foot-title-col2"></h3>
+
+    <div class="footer-col">
+
+      <h3 id="foot-title-col2">
+        بەشەکانی پلاتفۆرم
+      </h3>
 
       <ul id="footer-chapters-list-col"></ul>
+
     </div>
 
-    <div class="footer-column">
-      <h3 id="foot-title-col3"></h3>
+
+    <div class="footer-col">
+
+      <h3 id="foot-title-col3">
+        لینکی پلاتفۆرمی تر
+      </h3>
+
+      <ul>
+        <li>
+          <a href="javascript:void(0)">زانکۆ</a>
+        </li>
+
+        <li>
+          <a href="javascript:void(0)">توێژینەوە</a>
+        </li>
+
+        <li>
+          <a href="javascript:void(0)">زانستی ڕووەک</a>
+        </li>
+
+      </ul>
+
     </div>
 
-    <div class="footer-column">
-      <h3 id="foot-title-col4"></h3>
+
+    <div class="footer-col">
+
+      <h3 id="foot-title-col4">
+        زانیاری پلاتفۆرم
+      </h3>
 
       <div id="foot-info-academic"></div>
 
-      <div class="view-counter">
-        <span id="foot-view-text"></span>
-        <strong id="view-count-num">0</strong>
-      </div>
     </div>
 
   </div>
 
+
   <div class="footer-bottom">
-    <p id="foot-rights"></p>
-    <p id="foot-developer"></p>
+
+    <span id="foot-view-text">
+      بینەری پلاتفۆرم:
+    </span>
+
+    <span>
+      <strong id="view-count-num">0</strong>
+    </span>
+
+    <span id="foot-rights">
+      سەرجەم مافەکانی پارێزراوە © 2026
+    </span>
+
+    <span id="foot-developer">
+      ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد
+    </span>
+
   </div>
 
 </footer>
@@ -823,368 +1357,467 @@
   const fallbackImg =
     "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?q=80&w=600";
 
+
   const translations = {
 
     ku: {
+
       dir: "rtl",
+
       tagStr: "بەشی ",
+
       readMore: "خوێندنەوەی زیاتر",
+
       searchPlaceholder: "گەڕان بەدوای بەشەکاندا...",
+
       eyebrow: "زانستی درەوشاوەی ڕووەک",
+
       title: "NovaPlant",
+
       heroDesc:
         "پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.",
+
       secTitle: "بەشەکانی پلاتفۆرم",
+
       secSubtitle:
         "لێرەوە بڕوانە ناو کایە جیاوازەکانی زانستی ڕووەک و سەرچاوەکان",
+
       btn: "دەست پێبکە",
+
       lightBtn: "ڕووناک",
+
       darkBtn: "تاریک",
-      menuTitle: "بەشەکانی پلاتفۆرم",
+
+      menuTitle: "بەشەکانی وێبەکە",
+
+      homeLabel: "سەرەتا",
+
+      footerLabel: "پەیوەندی و زانیاری",
+
       footCol1: "پلاتفۆرم",
+
       footCol2: "بەشەکانی پلاتفۆرم",
+
       footCol3: "لینکی پلاتفۆرمی تر",
+
       footCol4: "زانیاری پلاتفۆرم",
+
       footTitle: "پلاتفۆرمی درەوشاوەی ڕووەک",
+
       footDesc:
         "پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.",
+
       footViews: "بینەری پلاتفۆرم:",
+
       footRights: "سەرجەم مافەکانی پارێزراوە © 2026",
+
       footDev:
         "ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد",
 
-      footAcademic: `
-        <div><span class="yellow-tag">• بەش :</span> ئینگلیزی</div>
-        <div><span class="yellow-tag">• کۆلێژ :</span> پەروەردە</div>
-        <div><span class="yellow-tag">• زانکۆ :</span> زانکۆی ڕاپەڕین</div>
-        <div><span class="yellow-tag">• بابەت :</span> ڕووەک</div>
-        <div><span class="yellow-tag">• ساڵ :</span> ٢٠٢٦ - ٢٠٢٧</div>
-        <div><span class="yellow-tag">• زمان :</span> کوردی - عربی - English</div>
-      `,
+      footAcademic:
+        `<div><span class="yellow-tag">• بەش :</span> ئینگلیزی</div>
+         <div><span class="yellow-tag">• کۆلێژ :</span> پەروەردە</div>
+         <div><span class="yellow-tag">• زانکۆ :</span> زانکۆی ڕاپەڕین</div>
+         <div><span class="yellow-tag">• بابەت :</span> ڕووەک</div>
+         <div><span class="yellow-tag">• ساڵ :</span> ٢٠٢٦ - ٢٠٢٧</div>
+         <div><span class="yellow-tag">• زمان :</span> کوردی - عربی - English</div>`,
 
       chapters: [
+
         {
           ch: "١",
           title: "زانیاری زیاتر",
           desc: "سەرەتایەک لەسەر ژینگەی ڕووەکە جیاوازەکان.",
           img: fallbackImg
         },
+
         {
           ch: "٢",
           title: "فەرهەنگی زاراوەکانی ڕووەک",
           desc: "چەمک و زاراوە گرنگەکانی زانستی فۆڕمی ڕووەک.",
           img: fallbackImg
         },
+
         {
           ch: "٣",
           title: "پێکهاتە ناوەکی و شێوەناسی ڕووەک",
           desc: "پێکهاتەی ناوەوەی ڕووەکە جیاوازەکان و خانەکان.",
           img: fallbackImg
         },
+
         {
           ch: "٤",
           title: "پۆلێن کردن و هەمەچەشنی ڕووەک",
           desc: "پۆلێنکردنی خێزانە سەرەکیەکانی جیهانی ڕووەک.",
           img: fallbackImg
         },
+
         {
           ch: "٥",
           title: "کارئەندام زانی و کارلێکەکانی ڕووەک",
           desc: "پڕۆسە کیمیاییەکان و کارلێکەکانی ناو ڕووەک.",
           img: fallbackImg
         },
+
         {
           ch: "٦",
           title: "تەکنەلۆجیای نوێ لە زانستی ڕووەک",
-          desc:
-            "بەکارهێنانی زیرەکی دەستکرد و تەکنەلۆژیای جینی لە ڕووەکدا.",
+          desc: "بەکارهێنانی زیرەکی دەستکرد و تەکنەلۆژیای جینی لە ڕووەکدا.",
           img: fallbackImg
         },
+
         {
           ch: "٧",
           title: "نەخۆشییەکانی ڕووەک و نیشانە دەرەکییەکان",
-          desc:
-            "ناسینەوەی قارچک، بەکتریا و نیشانەکانی کەمبوونی ماددە خۆراکیەکان.",
+          desc: "ناسینەوەی قارچک، بەکتریا و نیشانەکانی کەمبوونی ماددە خۆراکیەکان.",
           img: fallbackImg
         },
+
         {
           ch: "٨",
           title: "پڕۆسە کرداریەکانی کشتوکاڵ",
-          desc:
-            "ئامادەکردنی خاک، چاندنی تۆو, و بەڕێوبردنی کێڵگەکان.",
+          desc: "ئامادەکردنی خاک، چاندنی تۆو, و بەڕێوبردنی کێڵگەکان.",
           img: fallbackImg
         },
+
         {
           ch: "٩",
           title: "ڕێنمای تاقیگە بۆ ڕووەک",
           desc: "شێوازی کارکردنی ئامێرەکان لە تاقیگەدا.",
           img: fallbackImg
         },
+
         {
           ch: "١٠",
           title: "توێژینەوە و وتار",
           desc: "بابەتە زانستییە بڵاوکراوەکانی پلاتفۆرمەکەمان.",
           img: fallbackImg
         },
+
         {
           ch: "١١",
           title: "ڕوونکردنەوەی ڤیدیۆیی",
           desc: "بابەتە کردارەکیەکان بە ڤیدیۆ لێرە ببینە.",
           img: fallbackImg
         },
+
         {
           ch: "١٢",
           title: "کویز و تاقیکردنەوە",
-          desc:
-            "ئاواتی زانیاریت لێرە تاقی بکەرەوە بە شێوەی ئۆنلاین.",
+          desc: "ئاواتی زانیاریت لێرە تاقی بکەرەوە بە شێوەی ئۆنلاین.",
           img: fallbackImg
         }
+
       ]
+
     },
 
+
     en: {
+
       dir: "ltr",
+
       tagStr: "Chapter ",
+
       readMore: "Read More",
+
       searchPlaceholder: "Search chapters...",
+
       eyebrow: "Brilliant Botanical Science",
+
       title: "NovaPlant",
+
       heroDesc:
         "Advanced scientific and academic platform for students, teachers, researchers, and farmers using modern information.",
+
       secTitle: "Platform Chapters",
+
       secSubtitle:
         "Explore various domains of plant science and research resources from here.",
+
       btn: "Get Started",
+
       lightBtn: "Light",
+
       darkBtn: "Dark",
-      menuTitle: "Platform Chapters",
+
+      menuTitle: "Website Sections",
+
+      homeLabel: "Home",
+
+      footerLabel: "Contact & Info",
+
       footCol1: "Platform",
+
       footCol2: "Platform Chapters",
+
       footCol3: "Other Platform Links",
+
       footCol4: "Platform Info",
+
       footTitle: "Brilliant Botanical Platform",
+
       footDesc:
         "Advanced scientific and academic platform for students, teachers, researchers, and farmers using modern information.",
+
       footViews: "Platform Views:",
+
       footRights: "All Rights Reserved © 2026",
+
       footDev:
         "Scientific Coordinator & Web Developer: Pshtiwan Omer Ahmed",
 
-      footAcademic: `
-        <div><span class="yellow-tag">• Dept :</span> English</div>
-        <div><span class="yellow-tag">• Faculty :</span> Education</div>
-        <div><span class="yellow-tag">• University :</span> University of Raparin</div>
-        <div><span class="yellow-tag">• Subject :</span> Plant</div>
-        <div><span class="yellow-tag">• Year :</span> 2026 - 2027</div>
-        <div><span class="yellow-tag">• Lang :</span> Kurdish - Arabic - English</div>
-      `,
+      footAcademic:
+        `<div><span class="yellow-tag">• Dept :</span> English</div>
+         <div><span class="yellow-tag">• Faculty :</span> Education</div>
+         <div><span class="yellow-tag">• University :</span> University of Raparin</div>
+         <div><span class="yellow-tag">• Subject :</span> Plant</div>
+         <div><span class="yellow-tag">• Year :</span> 2026 - 2027</div>
+         <div><span class="yellow-tag">• Lang :</span> Kurdish - Arabic - English</div>`,
 
       chapters: [
+
         {
           ch: "1",
           title: "More Information",
           desc: "An introduction to different plant environments.",
           img: fallbackImg
         },
+
         {
           ch: "2",
           title: "Plant Glossary & Dictionary",
           desc: "Important terms and concepts in plant morphology.",
           img: fallbackImg
         },
+
         {
           ch: "3",
           title: "Plant Anatomy & Morphology",
           desc: "Internal cell structures and tissues of plant forms.",
           img: fallbackImg
         },
+
         {
           ch: "4",
           title: "Taxonomy & Diversity",
           desc: "Classification of main kingdoms in the plant world.",
           img: fallbackImg
         },
+
         {
           ch: "5",
           title: "Plant Physiology & Biochem",
           desc: "Chemical activities and processes inside the plant.",
           img: fallbackImg
         },
+
         {
           ch: "6",
           title: "New Technology in Plant Science",
           desc: "Using AI and gene technologies in modern botany.",
           img: fallbackImg
         },
+
         {
           ch: "7",
           title: "Plant Diseases & External Symptoms",
-          desc:
-            "Identifying fungi, bacteria, and nutrient deficiency signs.",
+          desc: "Identifying fungi, bacteria, and nutrient deficiency signs.",
           img: fallbackImg
         },
+
         {
           ch: "8",
           title: "Practical Agricultural Processes",
-          desc:
-            "Soil preparation, seed sowing, and farm operations.",
+          desc: "Soil preparation, seed sowing, and farm operations.",
           img: fallbackImg
         },
+
         {
           ch: "9",
           title: "Lab Guide & Technology",
-          desc:
-            "How lab instruments operate in biological workflows.",
+          desc: "How lab instruments operate in biological workflows.",
           img: fallbackImg
         },
+
         {
           ch: "10",
           title: "Research & Articles",
-          desc:
-            "Scientific articles and publications on our platform.",
+          desc: "Scientific articles and publications on our platform.",
           img: fallbackImg
         },
+
         {
           ch: "11",
           title: "Video Explanations",
-          desc:
-            "Watch practical demonstrations and videos here.",
+          desc: "Watch practical demonstrations and videos here.",
           img: fallbackImg
         },
+
         {
           ch: "12",
           title: "Quiz & Evaluation",
-          desc:
-            "Test your skills and biological knowledge online.",
+          desc: "Test your skills and biological knowledge online.",
           img: fallbackImg
         }
+
       ]
+
     },
 
+
     ar: {
+
       dir: "rtl",
+
       tagStr: "الفصل ",
+
       readMore: "قراءة المزيد",
+
       searchPlaceholder: "البحث عن الفصول...",
+
       eyebrow: "علم النبات المشرق",
+
       title: "NovaPlant",
+
       heroDesc:
         "منصة علمية وأكاديمية متقدمة للطلاب والمعلمين والباحثين والمزارعين باستخدام أحدث المعلومات المعاصرة.",
+
       secTitle: "أقسام المنصة",
+
       secSubtitle:
         "استکشف المجالات المختلفة لعلوم النبات والموارد العلمية من هنا.",
+
       btn: "ابدأ الآن",
+
       lightBtn: "فاتح",
+
       darkBtn: "مظلم",
-      menuTitle: "أقسام المنصة",
+
+      menuTitle: "أقسام الموقع",
+
+      homeLabel: "الرئيسية",
+
+      footerLabel: "المعلومات والتواصل",
+
       footCol1: "المنصة",
+
       footCol2: "أقسام المنصة",
+
       footCol3: "روابط منصات أخرى",
+
       footCol4: "معلومات المنصة",
+
       footTitle: "منصة علم النبات المشرقة",
+
       footDesc:
         "منصة علمية وأكاديمية متقدمة للطلاب والمعلمين والباحثين والمزارعين باستخدام أحدث المعلومات المعاصرة.",
+
       footViews: "مشاهدي المنصة:",
+
       footRights: "جميع الحقوق محفوظة © 2026",
+
       footDev:
         "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
 
-      footAcademic: `
-        <div><span class="yellow-tag">• القسم :</span> اللغةالإنجليزية</div>
-        <div><span class="yellow-tag">• الكلية :</span> التربية</div>
-        <div><span class="yellow-tag">• الجامعة :</span> جامعة رابرين</div>
-        <div><span class="yellow-tag">• المادة :</span> النبات</div>
-        <div><span class="yellow-tag">• السنة :</span> ٢٠٢٦ - ٢٠٢٧</div>
-        <div><span class="yellow-tag">• اللغة :</span> الكردية - العربية - الإنجليزية</div>
-      `,
+      footAcademic:
+        `<div><span class="yellow-tag">• القسم :</span> اللغةالإنجليزية</div>
+         <div><span class="yellow-tag">• الكلية :</span> التربية</div>
+         <div><span class="yellow-tag">• الجامعة :</span> جامعة رابرين</div>
+         <div><span class="yellow-tag">• المادة :</span> النبات</div>
+         <div><span class="yellow-tag">• السنة :</span> ٢٠٢٦ - ٢٠٢٧</div>
+         <div><span class="yellow-tag">• اللغة :</span> الكردية - العربية - الإنجليزية</div>`,
 
       chapters: [
+
         {
           ch: "١",
           title: "مزيد من المعلومات",
-          desc:
-            "مقدمة عامة حول بيئات النباتات المختلفة وطبيعتها.",
+          desc: "مقدمة عامة حول بيئات النباتات المختلفة وطبيعتها.",
           img: fallbackImg
         },
+
         {
           ch: "٢",
           title: "قاموس مصطلحات النبات",
-          desc:
-            "أهم المصطلحات والمفاهيم في مورفولوجيا النبات.",
+          desc: "أهم المصطلحات والمفاهيم في مورفولوجيا النبات.",
           img: fallbackImg
         },
+
         {
           ch: "٣",
           title: "تشريح وشكل النبات",
-          desc:
-            "الهياكل الخلوية الداخلية والأنسجة للأشكال النباتية.",
+          desc: "الهياكل الخلوية الداخلية والأنسجة للأشكال النباتية.",
           img: fallbackImg
         },
+
         {
           ch: "٤",
           title: "تصنيف وتنوع النبات",
-          desc:
-            "تصنيف الممالك الرئيسية في عالم النبات المتنوع.",
+          desc: "تصنيف الممالك الرئيسية في عالم النبات المتنوع.",
           img: fallbackImg
         },
+
         {
           ch: "٥",
           title: "فسيولوجيا النبات والكيمياء الحيوية",
-          desc:
-            "الأنشطة والعمليات الكيميائية الحيوية داخل النبات.",
+          desc: "الأنشطة والعمليات الكيميائية الحيوية داخل النبات.",
           img: fallbackImg
         },
+
         {
           ch: "٦",
           title: "التكنولوجيا الحديثة في علم النبات",
-          desc:
-            "استخدام الذكاء الاصطناعي وتقنيات الجينات في علم النبات الحديث.",
+          desc: "استخدام الذكاء الاصطناعي وتقنيات الجينات في علم النبات الحديث.",
           img: fallbackImg
         },
+
         {
           ch: "٧",
           title: "أمراض النبات والأعراض الخارجية",
-          desc:
-            "التعرف على الفطريات، البكتيريا، وعلامات نقص العناصر الغذائية.",
+          desc: "التعرف على الفطريات، البكتيريا، وعلامات نقص العناصر الغذائية.",
           img: fallbackImg
         },
+
         {
           ch: "٨",
           title: "العمليات الزراعية التطبيقية",
-          desc:
-            "تحضير التربة، زراعة البذور، وإدارة العمليات الحقلية.",
+          desc: "تحضير التربة، زراعة البذور، وإدارة العمليات الحقلية.",
           img: fallbackImg
         },
+
         {
           ch: "٩",
           title: "دليل المختبر والتكنولوجيا",
-          desc:
-            "كيفية تشغيل الأجهزة المختبرية في سير العمل البيولوجي.",
+          desc: "كيفية تشغيل الأجهزة المختبرية في سير العمل البيولوجي.",
           img: fallbackImg
         },
+
         {
           ch: "١٠",
           title: "الأبحاث والمقالات",
-          desc:
-            "المقالات العلمية والمنشورات المتاحة على منصتنا.",
+          desc: "المقالات العلمية والمنشورات المتاحة على منصتنا.",
           img: fallbackImg
         },
+
         {
           ch: "١١",
           title: "شروحات مرئية",
-          desc:
-            "شاهد العروض العملية والمقاطع التعليمية هنا.",
+          desc: "شاهد العروض العملية والمقاطع التعليمية هنا.",
           img: fallbackImg
         },
+
         {
           ch: "١٢",
           title: "الاختبارات والكويزات",
-          desc:
-            "اختبر مهاراتك ومعرفتك البيولوجية مباشرة عبر الإنترنت.",
+          desc: "اختبر مهاراتك ومعرفتك البيولوجية مباشرة عبر الإنترنت.",
           img: fallbackImg
         }
+
       ]
+
     }
+
   };
 
 
@@ -1195,28 +1828,24 @@
     const html = document.getElementById("html-tag");
 
     html.setAttribute("dir", data.dir);
+
     html.setAttribute("lang", lang);
 
-    document.querySelectorAll('.lang-btn')
+
+    document
+      .querySelectorAll('.lang-btn')
       .forEach(b => b.classList.remove('active'));
 
     document
       .getElementById(`btn-${lang}`)
       .classList.add('active');
 
+
     document.getElementById("search-bar").placeholder =
       data.searchPlaceholder;
 
     document.getElementById("search-bar").value = "";
 
-    document
-      .getElementById("search-result-count")
-      .classList.remove("show");
-
-    document.getElementById("nav-menu-title").innerText =
-      data.menuTitle;
-
-    document.getElementById("search-result-count").innerText = "";
 
     document.getElementById("hero-eyebrow").innerText =
       data.eyebrow;
@@ -1239,6 +1868,7 @@
     document.getElementById("sec-subtitle").innerText =
       data.secSubtitle;
 
+
     document.getElementById("foot-title-col1").innerText =
       data.footCol1;
 
@@ -1251,12 +1881,15 @@
     document.getElementById("foot-title-col4").innerText =
       data.footCol4;
 
+
     const infoAcademicEl =
       document.getElementById("foot-info-academic");
 
     if (infoAcademicEl) {
-      infoAcademicEl.innerHTML = data.footAcademic;
+      infoAcademicEl.innerHTML =
+        data.footAcademic;
     }
+
 
     document.getElementById("foot-main-title-custom").innerText =
       data.footTitle;
@@ -1279,15 +1912,19 @@
 
     titleContainer.innerHTML = "";
 
-    const words = data.title.split(" ");
+
+    const words =
+      data.title.split(" ");
 
     words.forEach((word, index) => {
 
-      const span = document.createElement("span");
+      const span =
+        document.createElement("span");
 
       span.innerText = word;
 
       titleContainer.appendChild(span);
+
 
       if (index < words.length - 1) {
 
@@ -1305,7 +1942,8 @@
 
     renderFooterChaptersColumn(data.chapters);
 
-    renderNavigationMenu(data.chapters, data);
+    renderSiteMenu(data.chapters, data);
+
   }
 
 
@@ -1316,9 +1954,12 @@
 
     container.innerHTML = "";
 
+
     chaptersList.forEach((item, index) => {
 
-      const delay = (index % 3) * 0.3;
+      const delay =
+        (index % 3) * 0.3;
+
 
       container.innerHTML += `
 
@@ -1340,6 +1981,7 @@
             >
 
           </div>
+
 
           <div class="card-content-box">
 
@@ -1379,11 +2021,13 @@
 
     columnContainer.innerHTML = "";
 
+
     chaptersList.forEach((item, index) => {
 
       columnContainer.innerHTML += `
 
         <li>
+
           <a
             href="javascript:void(0)"
             onclick="
@@ -1396,6 +2040,7 @@
           >
             ${item.title}
           </a>
+
         </li>
 
       `;
@@ -1405,99 +2050,164 @@
   }
 
 
-  /* ── NAVIGATION MENU ── */
+  function renderSiteMenu(chaptersList, data) {
 
-  function renderNavigationMenu(chaptersList, data) {
+    const menuList =
+      document.getElementById("site-menu-list");
 
-    const list =
-      document.getElementById("nav-menu-list");
+    const menuTitle =
+      document.getElementById("site-menu-title-text");
 
-    const count =
-      document.getElementById("nav-menu-count");
 
-    list.innerHTML = "";
+    menuTitle.innerText =
+      data.menuTitle;
 
-    count.innerText = chaptersList.length;
+    menuList.innerHTML = "";
+
+
+    const homeItem =
+      document.createElement("li");
+
+
+    homeItem.innerHTML = `
+
+      <a
+        href="#top"
+        onclick="
+          closeSiteMenu();
+          document
+            .getElementById('top')
+            .scrollIntoView({
+              behavior:'smooth'
+            });
+        "
+      >
+
+        <span class="menu-number">
+          ⌂
+        </span>
+
+        <span>
+          ${data.homeLabel}
+        </span>
+
+      </a>
+
+    `;
+
+
+    menuList.appendChild(homeItem);
+
 
     chaptersList.forEach((item, index) => {
 
-      const button =
-        document.createElement("button");
+      const li =
+        document.createElement("li");
 
-      button.type = "button";
 
-      button.className =
-        "nav-menu-item";
+      li.innerHTML = `
 
-      button.style.animationDelay =
-        `${index * 0.035}s`;
+        <a
+          href="#chapter-id-${index}"
+          onclick="
+            closeSiteMenu();
+            document
+              .getElementById('chapter-id-${index}')
+              .scrollIntoView({
+                behavior:'smooth'
+              });
+          "
+        >
 
-      button.innerHTML = `
+          <span class="menu-number">
+            ${item.ch}
+          </span>
 
-        <span class="nav-menu-number">
-          ${item.ch}
-        </span>
+          <span>
+            ${item.title}
+          </span>
 
-        <span class="nav-menu-item-text">
-          ${item.title}
-        </span>
+        </a>
 
       `;
 
-      button.addEventListener("click", () => {
 
-        const target =
-          document.getElementById(
-            `chapter-id-${index}`
-          );
-
-        if (target) {
-
-          closeNavigationMenu();
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
-
-          target.classList.remove("search-match");
-
-          void target.offsetWidth;
-
-          target.classList.add("search-match");
-        }
-
-      });
-
-      list.appendChild(button);
+      menuList.appendChild(li);
 
     });
+
+
+    const footerItem =
+      document.createElement("li");
+
+
+    footerItem.innerHTML = `
+
+      <a
+        href="#site-footer"
+        onclick="
+          closeSiteMenu();
+          document
+            .getElementById('site-footer')
+            .scrollIntoView({
+              behavior:'smooth'
+            });
+        "
+      >
+
+        <span class="menu-number">
+          ✓
+        </span>
+
+        <span>
+          ${data.footerLabel}
+        </span>
+
+      </a>
+
+    `;
+
+
+    menuList.appendChild(footerItem);
 
   }
 
 
-  function toggleNavigationMenu() {
+  function toggleSiteMenu() {
 
-    const panel =
-      document.getElementById("nav-menu-panel");
+    const menu =
+      document.getElementById("site-menu");
 
-    const toggle =
+    const backdrop =
+      document.getElementById("menu-backdrop");
+
+    const button =
       document.getElementById("menu-toggle");
 
-    const isOpen =
-      panel.classList.toggle("open");
 
-    toggle.classList.toggle(
+    const isOpen =
+      menu.classList.toggle("open");
+
+
+    backdrop.classList.toggle(
+      "open",
+      isOpen
+    );
+
+
+    button.classList.toggle(
       "active",
       isOpen
     );
 
-    toggle.setAttribute(
+
+    button.setAttribute(
       "aria-expanded",
       String(isOpen)
     );
 
-    panel.setAttribute(
+
+    menu.setAttribute(
       "aria-hidden",
       String(!isOpen)
     );
@@ -1505,24 +2215,32 @@
   }
 
 
-  function closeNavigationMenu() {
+  function closeSiteMenu() {
 
-    const panel =
-      document.getElementById("nav-menu-panel");
+    const menu =
+      document.getElementById("site-menu");
 
-    const toggle =
+    const backdrop =
+      document.getElementById("menu-backdrop");
+
+    const button =
       document.getElementById("menu-toggle");
 
-    panel.classList.remove("open");
 
-    toggle.classList.remove("active");
+    menu.classList.remove("open");
 
-    toggle.setAttribute(
+    backdrop.classList.remove("open");
+
+    button.classList.remove("active");
+
+
+    button.setAttribute(
       "aria-expanded",
       "false"
     );
 
-    panel.setAttribute(
+
+    menu.setAttribute(
       "aria-hidden",
       "true"
     );
@@ -1530,125 +2248,75 @@
   }
 
 
-  /* ── CLOSE MENU WHEN CLICKING OUTSIDE ── */
+  document.addEventListener(
+    "keydown",
+    function(e) {
 
-  document.addEventListener("click", function(e) {
-
-    const panel =
-      document.getElementById("nav-menu-panel");
-
-    const toggle =
-      document.getElementById("menu-toggle");
-
-    if (
-      panel &&
-      panel.classList.contains("open") &&
-      !panel.contains(e.target) &&
-      !toggle.contains(e.target)
-    ) {
-
-      closeNavigationMenu();
+      if (e.key === "Escape") {
+        closeSiteMenu();
+      }
 
     }
-
-  });
+  );
 
 
   /* ── SEARCH ── */
 
   document
     .getElementById("search-bar")
-    .addEventListener("input", function(e) {
+    .addEventListener(
+      "input",
+      function(e) {
 
-      const term =
-        e.target.value
-          .toLocaleLowerCase()
-          .trim();
+        const term =
+          e.target.value
+            .toLocaleLowerCase()
+            .trim();
 
-      const cards =
-        document.querySelectorAll(".chapter-card");
 
-      let matches = 0;
-
-      cards.forEach(card => {
-
-        const title =
-          card
-            .querySelector(".card-title")
-            ?.innerText
-            .toLocaleLowerCase() || "";
-
-        const desc =
-          card
-            .querySelector(".card-desc")
-            ?.innerText
-            .toLocaleLowerCase() || "";
-
-        const tag =
-          card
-            .querySelector(".card-chapter-tag")
-            ?.innerText
-            .toLocaleLowerCase() || "";
-
-        const matched =
-          !term ||
-          title.includes(term) ||
-          desc.includes(term) ||
-          tag.includes(term);
-
-        card.style.display =
-          matched ? "flex" : "none";
-
-        if (matched && term) {
-
-          matches++;
-
-          card.classList.remove(
-            "search-match"
+        const cards =
+          document.querySelectorAll(
+            ".chapter-card"
           );
 
-          void card.offsetWidth;
 
-          card.classList.add(
-            "search-match"
-          );
+        cards.forEach(card => {
 
-        } else {
-
-          card.classList.remove(
-            "search-match"
-          );
-
-        }
-
-      });
+          const title =
+            card
+              .querySelector(".card-title")
+              ?.innerText
+              .toLocaleLowerCase() || "";
 
 
-      const result =
-        document.getElementById(
-          "search-result-count"
-        );
+          const desc =
+            card
+              .querySelector(".card-desc")
+              ?.innerText
+              .toLocaleLowerCase() || "";
 
-      if (term) {
 
-        result.innerText =
-          `${matches} ${
-            matches === 1
-              ? "result"
-              : "results"
-          }`;
+          const chapter =
+            card
+              .querySelector(".card-chapter-tag")
+              ?.innerText
+              .toLocaleLowerCase() || "";
 
-        result.classList.add("show");
 
-      } else {
+          const matches =
+            !term ||
+            title.includes(term) ||
+            desc.includes(term) ||
+            chapter.includes(term);
 
-        result.innerText = "";
 
-        result.classList.remove("show");
+          card.style.display =
+            matches ? "flex" : "none";
+
+        });
 
       }
-
-    });
+    );
 
 
   function toggleMobileSearch() {
@@ -1658,9 +2326,11 @@
         "search-container"
       );
 
+
     sc.classList.toggle(
       "mobile-open"
     );
+
 
     if (
       sc.classList.contains(
@@ -1685,24 +2355,33 @@
         b => b.classList.remove('active')
       );
 
+
     if (mode === 'dark') {
 
       document.body.classList.add(
         "dark-mode"
       );
 
+
       document
-        .getElementById("theme-dark-btn")
+        .getElementById(
+          "theme-dark-btn"
+        )
         .classList.add("active");
 
-    } else {
+    }
+
+    else {
 
       document.body.classList.remove(
         "dark-mode"
       );
 
+
       document
-        .getElementById("theme-light-btn")
+        .getElementById(
+          "theme-light-btn"
+        )
         .classList.add("active");
 
     }
@@ -1717,6 +2396,7 @@
         "novaplant_clean_views"
       ) || 0;
 
+
     if (
       !sessionStorage.getItem(
         "novaplant_session_clean"
@@ -1726,10 +2406,12 @@
       totalViews =
         parseInt(totalViews) + 1;
 
+
       localStorage.setItem(
         "novaplant_clean_views",
         totalViews
       );
+
 
       sessionStorage.setItem(
         "novaplant_session_clean",
@@ -1738,9 +2420,13 @@
 
     }
 
+
     document
-      .getElementById("view-count-num")
-      .innerText = totalViews;
+      .getElementById(
+        "view-count-num"
+      )
+      .innerText =
+      totalViews;
 
   }
 
