@@ -111,7 +111,7 @@
     outline: none;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  html[dir=\"ltr\"] .search-input {
+  html[dir="ltr"] .search-input {
     padding: 0.6rem 1.2rem 0.6rem 2.8rem;
   }
   body.dark-mode .search-input {
@@ -135,7 +135,7 @@
     pointer-events: none;
     transition: stroke 0.3s;
   }
-  html[dir=\"ltr\"] .search-icon {
+  html[dir="ltr"] .search-icon {
     right: auto; left: 1rem;
   }
   body.dark-mode .search-icon {
@@ -230,7 +230,7 @@
   .hero-divider svg {
     display: none;
   }
-  html[dir=\"ltr\"] .hero-divider svg { animation-direction: reverse; }
+  html[dir="ltr"] .hero-divider svg { animation-direction: reverse; }
   .hero-divider .wave-back {
     fill: var(--green-light);
     opacity: .55;
@@ -253,7 +253,7 @@
     animation: morphBlob 16s ease-in-out infinite alternate;
     z-index: 1;
   }
-  html[dir=\"ltr\"] .hero::before { right: auto; left: -12%; }
+  html[dir="ltr"] .hero::before { right: auto; left: -12%; }
  
   .hero-text { 
     position: relative; 
@@ -436,7 +436,7 @@
     filter: drop-shadow(0 15px 30px rgba(45,80,22,.2));
     animation: float 6s ease-in-out infinite;
   }
-  html[dir=\"ltr\"] .plant-main { right: auto; left: 0; }
+  html[dir="ltr"] .plant-main { right: auto; left: 0; }
  
   .plant-secondary {
     position: absolute; bottom: 45px; left: -20px;
@@ -446,7 +446,7 @@
     filter: drop-shadow(0 10px 20px rgba(45,80,22,.15));
     animation: float 7s 1s ease-in-out infinite;
   }
-  html[dir=\"ltr\"] .plant-secondary { left: auto; right: -20px; }
+  html[dir="ltr"] .plant-secondary { left: auto; right: -20px; }
  
   /* ── CHAPTERS GRID ── */
   .chapters-section {
@@ -560,7 +560,7 @@
     font-weight: 700;
     z-index: 5;
   }
-  html[dir=\"ltr\"] .card-chapter-tag { right: auto; left: 15px; }
+  html[dir="ltr"] .card-chapter-tag { right: auto; left: 15px; }
 
   .card-chapter-tag::before {
     content: '';
@@ -686,7 +686,7 @@
     z-index: 2;
     text-align: start;
   }
-  html[dir=\"rtl\"] .footer-grid-layout { text-align: right; }
+  html[dir="rtl"] .footer-grid-layout { text-align: right; }
  
   .footer-row-top {
     display: grid;
@@ -804,7 +804,7 @@
     color: #facc15; 
     transform: translateX(-3px); 
   }
-  html[dir=\"ltr\"] .footer-links-column-container li a:hover {
+  html[dir="ltr"] .footer-links-column-container li a:hover {
     transform: translateX(3px);
   }
 
@@ -889,7 +889,7 @@
     align-items: center;
     gap: 15px;
   }
-  html[dir=\"ltr\"] .footer-rights {
+  html[dir="ltr"] .footer-rights {
     flex-direction: row-reverse; 
   }
  
@@ -1131,7 +1131,7 @@
         </ul>
       </div>
 
-      <div class="footer-col-custom">
+      <div class="footer-col-custom" id="footer-col-four">
         <h4 class="footer-col-title-yellow" id="foot-title-col4">زانیاری پلاتفۆرم</h4>
         <div class="academic-info-list" id="foot-info-academic">
           <div><span class="yellow-tag">• بەش :</span> بایۆلۆجی</div>
@@ -1300,14 +1300,24 @@
     document.getElementById("foot-title-col1").innerText = data.footCol1;
     document.getElementById("foot-title-col2").innerText = data.footCol2;
     document.getElementById("foot-title-col3").innerText = data.footCol3;
-    document.getElementById("foot-title-col4").innerText = data.footCol4;
+    
+    const footerColFour = document.getElementById("footer-col-four");
+    if (footerColFour) {
+      const infoItemsHtml = data.footAcademic;
+      footerColFour.innerHTML = `
+                    <h3 class="col-title" id="f-title-info">${lang === 'en' ? 'Platform Info' : (lang === 'ar' ? 'معلومات المنصة' : 'زانیاری پلاتفۆڕم')}</h3>
+                    <ul class="footer-info-details" id="footer-info-list">
+                        ${infoItemsHtml}
+                    </ul>
+                    <img src="uni-logo.png" alt="University Logo" class="university-logo-footer">
+                `;
+    }
     
     document.getElementById("foot-main-title-custom").innerText = data.footTitle;
     document.getElementById("foot-desc-custom").innerText = data.footDesc;
     document.getElementById("foot-view-text").innerText = data.footViews;
     document.getElementById("foot-rights").innerText = data.footRights;
     document.getElementById("foot-developer").innerText = data.footDev;
-    document.getElementById("foot-info-academic").innerHTML = data.footAcademic;
  
     const titleContainer = document.getElementById("hero-title");
     titleContainer.innerHTML = "";
