@@ -57,29 +57,6 @@
     transition: background 0.3s, color 0.3s;
   }
  
-  /* ── MENU TOGGLE BTN ── */
-  .menu-toggle-btn {
-    background: rgba(139, 69, 19, 0.05);
-    border: 1px solid rgba(139, 69, 19, 0.1);
-    font-size: 24px;
-    color: var(--navbar-text);
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .menu-toggle-btn:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-  }
-
   /* ── NAV ── */
   nav.navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -928,11 +905,6 @@
     .search-container { max-width: 300px; margin: 0 0.8rem; }
   }
   @media (max-width: 768px) {
-    .menu-toggle-btn, .nav-search-btn {
-      width: 36px;
-      height: 36px;
-      font-size: 18px;
-    }
     nav.navbar { padding: 0.7rem 4%; flex-wrap: nowrap; justify-content: space-between; gap: .4rem; }
     .search-container { display: none; }
     .search-container.mobile-open {
@@ -975,30 +947,7 @@
 </style>
 </head>
 <body>
-
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <h3>Nova<span>Menu</span></h3>
-    <button class="close-sidebar-btn" id="close-sidebar"><i class="ph ph-x"></i></button>
-  </div>
-  <ul class="sidebar-links">
-    <li class="active"><a href="#"><i class="ph ph-house"></i><span id="sb-home">سەرەکی</span></a></li>
-    <div class="sidebar-subtitle" id="sb-title-ch">چاپتەرەکان</div>
-    <li><a href="#ch1"><i class="ph ph-book-open"></i><span id="sb-ch1">١. زانیاری زیاتر</span></a></li>
-    <li><a href="#ch2"><i class="ph ph-book-open"></i><span id="sb-ch2">٢. فەرهەنگی زاراوەکانی ڕووەک</span></a></li>
-    <li><a href="#ch3"><i class="ph ph-book-open"></i><span id="sb-ch3">٣. پێکهاتە ناوەکی و شێوەناسی ڕووەک</span></a></li>
-    <li><a href="#ch4"><i class="ph ph-book-open"></i><span id="sb-ch4">٤. پۆلێن کردن و هەمەچەشنی ڕووەک</span></a></li>
-    <li><a href="#ch5"><i class="ph ph-book-open"></i><span id="sb-ch5">٥. کارئەندام زانی و کارلێکەکانی ڕووەک</span></a></li>
-    <li><a href="#ch6"><i class="ph ph-book-open"></i><span id="sb-ch6">٦. تەکنەلۆجیای نوێ لە زانستی ڕووەک</span></a></li>
-    <li><a href="#ch7"><i class="ph ph-book-open"></i><span id="sb-ch7">٧. نەخۆشییەکانی ڕووەک و نیشانە دەرەکییەکان</span></a></li>
-    <li><a href="#ch8"><i class="ph ph-book-open"></i><span id="sb-ch8">٨. پڕۆسە کرداریەکانی کشتوکاڵ</span></a></li>
-    <li><a href="#ch9"><i class="ph ph-book-open"></i><span id="sb-ch9">٩. ڕێنمای تاقیگە بۆ ڕووەک</span></a></li>
-    <li><a href="#ch10"><i class="ph ph-book-open"></i><span id="sb-ch10">١٠. توێژینەوە و وتار</span></a></li>
-    <li><a href="#ch11"><i class="ph ph-book-open"></i><span id="sb-ch11">١١. ڕوونکردنەوەی ڤیدیۆیی</span></a></li>
-    <li><a href="#ch12"><i class="ph ph-book-open"></i><span id="sb-ch12">١٢. کویز و تاقیکردنەوە</span></a></li>
-  </ul>
-</aside>
-
+ 
 <nav class="navbar">
   <a class="logo" href="#">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
