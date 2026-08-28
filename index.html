@@ -263,6 +263,8 @@
     transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
     padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   html[dir="ltr"] .sidebar {
@@ -374,6 +376,66 @@
 
   body.dark-mode .sidebar-subtitle {
     color: #86efac;
+  }
+
+  /* ── SIDEBAR CONTACT SECTION ── */
+  .sidebar-contact-section {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(16, 185, 129, 0.15);
+  }
+
+  .sidebar-contact-dev {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    padding: 0 10px 10px;
+  }
+
+  .sidebar-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sidebar-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: rgba(16, 185, 129, 0.04);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    color: var(--text-dark);
+  }
+
+  .sidebar-contact-item i {
+    font-size: 19px;
+    color: var(--green-cta);
+    flex-shrink: 0;
+  }
+
+  .sidebar-contact-item a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .sidebar-contact-item a:hover {
+    color: var(--green-cta);
+    text-decoration: underline;
+  }
+
+  .contact-phone-numbers {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    direction: ltr;
+    unicode-bidi: embed;
   }
 
   .sidebar-overlay {
@@ -1178,10 +1240,8 @@
 
 <body>
 
-<!-- ── SIDEBAR OVERLAY ── -->
 <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-<!-- ── SIDEBAR MENU ── -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <h3>Nova<span>Menu</span></h3>
@@ -1284,12 +1344,28 @@
       </a>
     </li>
   </ul>
+
+  <div class="sidebar-contact-section">
+    <div class="sidebar-subtitle" id="sb-contact-title">پەیوەندی : -</div>
+    <div class="sidebar-contact-dev" id="sb-contact-dev">ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد</div>
+    <ul class="sidebar-contact-list">
+      <li class="sidebar-contact-item">
+        <i class="ph ph-facebook-logo"></i>
+        <a href="https://www.facebook.com/share/1BcKj1aoy9/" target="_blank" rel="noopener noreferrer">Pshtiwan O. Jutyar</a>
+      </li>
+      <li class="sidebar-contact-item">
+        <i class="ph ph-phone-call"></i>
+        <span class="contact-phone-numbers">
+          <a href="tel:07501656601">07501656601</a> - <a href="tel:07728602388">07728602388</a>
+        </span>
+      </li>
+    </ul>
+  </div>
 </aside>
 
 <nav class="navbar">
 
   <div class="nav-left-group">
-    <!-- MENU BUTTON -->
     <button
       class="menu-toggle-btn"
       id="menu-toggle"
@@ -1556,6 +1632,8 @@
       footViews: "بینەری پلاتفۆرم:",
       footRights: "سەرجەم مافەکانی پارێزراوە © 2026",
       footDev: "ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد",
+      sbContactTitle: "پەیوەندی : -",
+      sbContactDev: "ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد",
 
       footAcademic: `<div><span class="yellow-tag">• بەش :</span> ئینگلیزی</div>
                      <div><span class="yellow-tag">• کۆلێژ :</span> پەروەردە</div>
@@ -1600,6 +1678,8 @@
       footViews: "Platform Visitors:",
       footRights: "All Rights Reserved © 2026",
       footDev: "Scientific Coordinator and Web Developer: Pshtiwan Omer Ahmed",
+      sbContactTitle: "Contact Us : -",
+      sbContactDev: "Scientific Coordinator and Web Developer: Pshtiwan Omer Ahmed",
 
       footAcademic: `<div><span class="yellow-tag">• Department:</span> English</div>
                      <div><span class="yellow-tag">• College:</span> Education</div>
@@ -1644,6 +1724,8 @@
       footViews: "مشاهدي المنصة:",
       footRights: "جميع الحقوق محفوظة © 2026",
       footDev: "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
+      sbContactTitle: "اتصل بنا : -",
+      sbContactDev: "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
 
       footAcademic: `<div><span class="yellow-tag">• القسم :</span> اللغةالإنجليزية</div>
                      <div><span class="yellow-tag">• الكلية :</span> التربية</div>
@@ -1704,6 +1786,16 @@
     document.getElementById("foot-view-text").innerText = data.footViews;
     document.getElementById("foot-rights").innerText = data.footRights;
     document.getElementById("foot-developer").innerText = data.footDev;
+
+    // Contact Sidebar Updates
+    const contactTitleEl = document.getElementById("sb-contact-title");
+    if (contactTitleEl) {
+      contactTitleEl.innerText = data.sbContactTitle;
+    }
+    const contactDevEl = document.getElementById("sb-contact-dev");
+    if (contactDevEl) {
+      contactDevEl.innerText = data.sbContactDev;
+    }
 
     const titleContainer = document.getElementById("hero-title");
     titleContainer.innerHTML = "";
