@@ -1049,10 +1049,24 @@
     display: inline-block;
   }
 
-  .footer-project-name-custom { 
-    font-size: 15px; 
-    font-weight: 700; 
-    color: #ffffff;
+  /* ── BRAND TITLES WITH NOVAENTOMO MOTION/DESIGN ── */
+  .nova-plant-brand {
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg, #cbd5e1, #facc15, #cbd5e1);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineTextLink 3s linear infinite;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    cursor: default;
+    width: fit-content;
+  }
+
+  .nova-plant-brand:hover {
+    transform: scale(1.06) !important;
   }
 
   .footer-title-custom { 
@@ -1728,7 +1742,7 @@
 
       <div class="footer-col-custom">
         <h4 class="footer-col-title-yellow" id="foot-title-col1">پلاتفۆرم</h4>
-        <div class="footer-project-name-custom">NovaPlant Platform</div>
+        <div class="nova-plant-brand">NovaPlant Platform</div>
         <div class="footer-title-custom" id="foot-main-title-custom">پلاتفۆرمی درەوشاوەی ڕووەک</div>
         <div class="footer-desc-custom" id="foot-desc-custom">پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.</div>
 
