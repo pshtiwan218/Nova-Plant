@@ -605,7 +605,8 @@
     border: 1px solid rgba(16, 185, 129, 0.25);
     box-shadow: 0 2px 10px rgba(16, 185, 129, 0.08);
     opacity: 0;
-    animation: fadeUp .7s .3s ease forwards, eyebrowSheen 5s linear infinite 1s;
+    animation: fadeUp .7s .3s ease forwards, eyebrowSheen 5s linear infinite 1s, eyebrowFloating 3s ease-in-out infinite alternate;
+    transition: transform 0.3s ease;
   }
   body.dark-mode .eyebrow { color: #86efac; }
   .eyebrow .eyebrow-icon {
@@ -615,6 +616,30 @@
     animation: eyebrowIconPulse 2.4s ease-in-out infinite;
   }
   .eyebrow .eyebrow-icon svg { width: 100%; height: 100%; stroke: currentColor; }
+  
+  #hero-eyebrow {
+    background: linear-gradient(135deg, #2D5016, #3D9A3E, #10B981);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: eyebrowTextGlow 4s ease infinite;
+    display: inline-block;
+  }
+  body.dark-mode #hero-eyebrow {
+    background: linear-gradient(135deg, #ffffff, #a7f3d0, #34d399);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes eyebrowFloating {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
+  }
+  @keyframes eyebrowTextGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
   @keyframes eyebrowSheen {
     0%   { background-position: 0% 50%; }
     100% { background-position: 220% 50%; }
@@ -1644,10 +1669,10 @@
           <path d="M12 8v8M8 12h8"/>
         </svg>
       </span>
-      <span id="hero-eyebrow">NovaPlant</span>
+      <span id="hero-eyebrow">زانستی درەوشاوەی ڕووەک</span>
     </span>
 
-    <h1 id="hero-title">زانستی درەوشاوەی ڕووەک</h1>
+    <h1 id="hero-title">NovaPlant</h1>
 
     <div class="hero-desc">
       <p id="hero-desc-txt">پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.</p>
@@ -1832,8 +1857,8 @@
       tagStr: "بەشی ",
       readMore: "خوێندنەوەی زیاتر",
       searchPlaceholder: "گەڕان بەدوای بەشەکاندا...",
-      eyebrow: "NovaPlant",
-      title: "زانستی درەوشاوەی ڕووەک",
+      eyebrow: "زانستی درەوشاوەی ڕووەک",
+      title: "NovaPlant",
       heroDesc: "پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.",
       secTitle: "بەشەکانی پلاتفۆرم",
       secSubtitle: "لێرەوە بڕوانە ناو کایە جیاوازەکانی زانستی ڕووەک و سەرچاوەکان",
@@ -1881,8 +1906,8 @@
       tagStr: "Chapter ",
       readMore: "Read More",
       searchPlaceholder: "Search chapters...",
-      eyebrow: "NovaPlant",
-      title: "Brilliant Plant Science",
+      eyebrow: "Brilliant Plant Science",
+      title: "NovaPlant",
       heroDesc: "An advanced scientific and academic platform for students, teachers, researchers and farmers using the latest contemporary information.",
       secTitle: "Platform Chapters",
       secSubtitle: "Explore different areas of plant science and scientific resources from here.",
@@ -1930,8 +1955,8 @@
       tagStr: "الفصل ",
       readMore: "قراءة المزيد",
       searchPlaceholder: "البحث عن الأقسام...",
-      eyebrow: "NovaPlant",
-      title: "علم النبات المشرق",
+      eyebrow: "علم النبات المشرق",
+      title: "NovaPlant",
       heroDesc: "منصة علمية وأكاديمية متقدمة للطلاب والمعلمين والباحثين والمزارعين باستخدام أحدث المعلومات المعاصرة.",
       secTitle: "أقسام المنصة",
       secSubtitle: "استکشف المجالات المختلفة لعلوم النبات والموارد العلمية من هنا.",
