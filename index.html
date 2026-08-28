@@ -1069,25 +1069,68 @@
     text-align: justify;
   }
 
+  /* ── UPGRADED MODERN VIEWER COUNTER ── */
   .viewer-counter-box {
-    background: linear-gradient(135deg, #15803d, #166534);
-    border: 1.5px solid #22c55e;
-    padding: 8px 12px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(21, 128, 61, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    padding: 7px 14px;
+    border-radius: 50px;
     display: inline-flex;
     align-items: center; 
-    gap: 8px;
+    gap: 10px;
     align-self: flex-start;
-    margin-top: 5px;
-    box-shadow: 0 4px 15px rgba(22, 101, 52, 0.4);
+    margin-top: 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 12px rgba(16, 185, 129, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .viewer-text { font-size: 11.5px; font-weight: 600; color: #f0fdf4; }
+  .viewer-counter-box:hover {
+    border-color: rgba(52, 211, 153, 0.7);
+    box-shadow: 0 6px 22px rgba(16, 185, 129, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .viewer-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #34d399;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #34d399;
+    animation: viewerDotPulse 2s infinite ease-in-out;
+    flex-shrink: 0;
+  }
+
+  @keyframes viewerDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  .viewer-icon {
+    font-size: 16px;
+    color: #34d399;
+    display: flex;
+    align-items: center;
+  }
+
+  .viewer-text { 
+    font-size: 12px; 
+    font-weight: 600; 
+    color: #f1f5f9; 
+    letter-spacing: 0.2px;
+  }
+
   .viewer-count {
-    font-weight: 700; color: #ffffff;
-    background: #14532d;
-    padding: 2px 10px;
-    border-radius: 6px; font-size: 11.5px;
+    font-weight: 800; 
+    color: #ffffff;
+    background: linear-gradient(135deg, #059669, #047857);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 3px 12px;
+    border-radius: 30px; 
+    font-size: 12.5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    letter-spacing: 0.5px;
   }
 
   .footer-links-column-container {
@@ -1482,14 +1525,13 @@
     </div>
   </div>
 
-  <!-- ── SIDEBAR BIONOVA TEAM SECTION (NEW) ── -->
+  <!-- ── SIDEBAR BIONOVA TEAM SECTION ── -->
   <div class="sidebar-contact-card" style="margin-top: 15px;">
     <div class="contact-title" id="sb-team-title">
       <i class="ph ph-users-three"></i> تیمی BioNova
     </div>
 
     <div class="contact-links-box">
-      <!-- Facebook -->
       <a href="https://www.facebook.com/share/1Er9ncDSxW/?mibextid=wwXIfr" target="_blank" class="contact-item-row" title="Facebook">
         <div class="contact-icon-wrapper facebook-wrapper">
           <i class="ph ph-facebook-logo"></i>
@@ -1497,7 +1539,6 @@
         <span>BioNova</span>
       </a>
 
-      <!-- Instagram -->
       <a href="https://www.instagram.com/bionova.group?igsi=MWltdTYzZjlwMDZuNg==" target="_blank" class="contact-item-row" title="Instagram">
         <div class="contact-icon-wrapper instagram-wrapper">
           <i class="ph ph-instagram-logo"></i>
@@ -1691,7 +1732,12 @@
         <div class="footer-title-custom" id="foot-main-title-custom">پلاتفۆرمی درەوشاوەی ڕووەک</div>
         <div class="footer-desc-custom" id="foot-desc-custom">پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.</div>
 
-        <div class="viewer-counter-box">
+        <!-- NEW MODERN VIEWER COUNTER -->
+        <div class="viewer-counter-box" title="Platform Statistics">
+          <div class="viewer-pulse-dot"></div>
+          <div class="viewer-icon">
+            <i class="ph ph-eye"></i>
+          </div>
           <span class="viewer-text" id="foot-view-text">بینەری پلاتفۆرم:</span>
           <span class="viewer-count" id="view-count-num">0</span>
         </div>
@@ -1830,7 +1876,7 @@
       footCol4: "Platform Information",
       footTitle: "Brilliant Plant Science Platform",
       footDesc: "An advanced scientific and academic platform for students, teachers, researchers and farmers using the latest contemporary information.",
-      footViews: "Platform Visitors:",
+      footViews: "Platform Views:",
       footRights: "All Rights Reserved © 2026",
       footDev: "Scientific Coordinator and Web Developer: Pshtiwan Omer Ahmed",
       contactTitle: "Contact Us",
@@ -1879,7 +1925,7 @@
       footCol4: "معلومات المنصة",
       footTitle: "منصة علم النبات المشرقة",
       footDesc: "منصة علمية وأكاديمية متقدمة للطلاب والمعلمين والباحثين والمزارعين باستخدام أحدث المعلومات المعاصرة.",
-      footViews: "مشاهدي المنصة:",
+      footViews: "مشاهدات المنصة:",
       footRights: "جميع الحقوق محفوظة © 2026",
       footDev: "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
       contactTitle: "اتصل بنا",
