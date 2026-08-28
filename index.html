@@ -378,64 +378,128 @@
     color: #86efac;
   }
 
-  /* ── SIDEBAR CONTACT SECTION ── */
-  .sidebar-contact-section {
+  /* ── SIDEBAR CONTACT BOX (NEW) ── */
+  .sidebar-contact-card {
     margin-top: 25px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(74, 124, 47, 0.05));
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .sidebar-contact-dev {
+  body.dark-mode .sidebar-contact-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(0, 0, 0, 0.25));
+    border-color: rgba(134, 239, 172, 0.2);
+  }
+
+  .contact-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+    padding-bottom: 6px;
+  }
+
+  body.dark-mode .contact-title {
+    color: #86efac;
+  }
+
+  .contact-role-name {
     font-size: 0.8rem;
-    color: var(--text-muted);
     line-height: 1.5;
-    padding: 0 10px 10px;
+    color: var(--text-dark);
   }
 
-  .sidebar-contact-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .contact-role-name span.role-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+  }
+
+  .contact-role-name span.dev-name {
+    font-weight: 700;
+    color: var(--green-cta);
+  }
+
+  .contact-links-box {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  .sidebar-contact-item {
+  .contact-item-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 10px;
-    background: rgba(16, 185, 129, 0.04);
-    border-radius: 10px;
-    font-size: 0.82rem;
+    text-decoration: none;
     color: var(--text-dark);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 10px;
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    transition: all 0.25s ease;
   }
 
-  .sidebar-contact-item i {
-    font-size: 19px;
-    color: var(--green-cta);
+  body.dark-mode .contact-item-row {
+    background: rgba(30, 45, 24, 0.8);
+    color: #e2e8f0;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .contact-item-row:hover {
+    background: var(--green-cta);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(61, 154, 62, 0.25);
+  }
+
+  .contact-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
     flex-shrink: 0;
   }
 
-  .sidebar-contact-item a {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
+  .facebook-wrapper {
+    background: #1877f2;
+    color: #ffffff;
   }
 
-  .sidebar-contact-item a:hover {
-    color: var(--green-cta);
-    text-decoration: underline;
+  .phone-wrapper {
+    background: #10b981;
+    color: #ffffff;
   }
 
-  .contact-phone-numbers {
-    display: inline-flex;
-    gap: 6px;
-    align-items: center;
+  .contact-item-row:hover .contact-icon-wrapper {
+    background: #ffffff;
+  }
+
+  .contact-item-row:hover .facebook-wrapper { color: #1877f2; }
+  .contact-item-row:hover .phone-wrapper { color: #10b981; }
+
+  .phone-numbers-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.78rem;
     direction: ltr;
-    unicode-bidi: embed;
+    text-align: left;
+  }
+
+  html[dir="rtl"] .phone-numbers-group {
+    text-align: right;
   }
 
   .sidebar-overlay {
@@ -1345,21 +1409,34 @@
     </li>
   </ul>
 
-  <div class="sidebar-contact-section">
-    <div class="sidebar-subtitle" id="sb-contact-title">پەیوەندی : -</div>
-    <div class="sidebar-contact-dev" id="sb-contact-dev">ڕێکخەری زانستی و گەشەپێدەری وێب:        پشتیوان عمر احمد</div>
-    <ul class="sidebar-contact-list">
-      <li class="sidebar-contact-item">
-        <i class="ph ph-facebook-logo"></i>
-        <a href="https://www.facebook.com/share/1BcKj1aoy9/" target="_blank" rel="noopener noreferrer">Pshtiwan O. Jutyar</a>
-      </li>
-      <li class="sidebar-contact-item">
-        <i class="ph ph-phone-call"></i>
-        <span class="contact-phone-numbers">
-          <a href="tel:07501656601">07501656601</a> - <a href="tel:07728602388">07728602388</a>
-        </span>
-      </li>
-    </ul>
+  <div class="sidebar-contact-card">
+    <div class="contact-title" id="sb-contact-title">
+      <i class="ph ph-address-book"></i> پەیوەندی
+    </div>
+
+    <div class="contact-role-name">
+      <span class="role-label" id="sb-contact-role">ڕێکخەری زانستی و گەشەپێدەری وێب:</span>
+      <span class="dev-name" id="sb-contact-name">پشتیوان عمر احمد</span>
+    </div>
+
+    <div class="contact-links-box">
+      <a href="https://www.facebook.com/share/1BcKj1aoy9/" target="_blank" class="contact-item-row" title="Facebook">
+        <div class="contact-icon-wrapper facebook-wrapper">
+          <i class="ph ph-facebook-logo"></i>
+        </div>
+        <span>Pshtiwan O. Jutyar</span>
+      </a>
+
+      <div class="contact-item-row">
+        <div class="contact-icon-wrapper phone-wrapper">
+          <i class="ph ph-phone-call"></i>
+        </div>
+        <div class="phone-numbers-group">
+          <a href="tel:07501656601" style="text-decoration:none; color:inherit;">07501656601</a>
+          <a href="tel:07728602388" style="text-decoration:none; color:inherit;">07728602388</a>
+        </div>
+      </div>
+    </div>
   </div>
 </aside>
 
@@ -1632,8 +1709,9 @@
       footViews: "بینەری پلاتفۆرم:",
       footRights: "سەرجەم مافەکانی پارێزراوە © 2026",
       footDev: "ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد",
-      sbContactTitle: "پەیوەندی : -",
-      sbContactDev: "ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد",
+      contactTitle: "پەیوەندی",
+      contactRole: "ڕێکخەری زانستی و گەشەپێدەری وێب:",
+      contactName: "پشتیوان عمر احمد",
 
       footAcademic: `<div><span class="yellow-tag">• بەش :</span> ئینگلیزی</div>
                      <div><span class="yellow-tag">• کۆلێژ :</span> پەروەردە</div>
@@ -1678,8 +1756,9 @@
       footViews: "Platform Visitors:",
       footRights: "All Rights Reserved © 2026",
       footDev: "Scientific Coordinator and Web Developer: Pshtiwan Omer Ahmed",
-      sbContactTitle: "Contact Us : -",
-      sbContactDev: "Scientific Coordinator and Web Developer: Pshtiwan Omer Ahmed",
+      contactTitle: "Contact Us",
+      contactRole: "Scientific Coordinator & Web Dev:",
+      contactName: "Pshtiwan Omer Ahmed",
 
       footAcademic: `<div><span class="yellow-tag">• Department:</span> English</div>
                      <div><span class="yellow-tag">• College:</span> Education</div>
@@ -1724,10 +1803,11 @@
       footViews: "مشاهدي المنصة:",
       footRights: "جميع الحقوق محفوظة © 2026",
       footDev: "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
-      sbContactTitle: "اتصل بنا : -",
-      sbContactDev: "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
+      contactTitle: "اتصل بنا",
+      contactRole: "المنسق العلمي ومطور الموقع:",
+      contactName: "پشتیوان عمر احمد",
 
-      footAcademic: `<div><span class="yellow-tag">• القسم :</span> اللغةالإنجليزية</div>
+      footAcademic: `<div><span class="yellow-tag">• القسم :</span> اللغة الإنجليزية</div>
                      <div><span class="yellow-tag">• الكلية :</span> التربية</div>
                      <div><span class="yellow-tag">• الجامعة :</span> جامعة رابرين</div>
                      <div><span class="yellow-tag">• المادة :</span> النبات</div>
@@ -1787,14 +1867,19 @@
     document.getElementById("foot-rights").innerText = data.footRights;
     document.getElementById("foot-developer").innerText = data.footDev;
 
-    // Contact Sidebar Updates
+    // Sidebar Contact Texts
     const contactTitleEl = document.getElementById("sb-contact-title");
+    const contactRoleEl = document.getElementById("sb-contact-role");
+    const contactNameEl = document.getElementById("sb-contact-name");
+
     if (contactTitleEl) {
-      contactTitleEl.innerText = data.sbContactTitle;
+      contactTitleEl.innerHTML = `<i class="ph ph-address-book"></i> ${data.contactTitle}`;
     }
-    const contactDevEl = document.getElementById("sb-contact-dev");
-    if (contactDevEl) {
-      contactDevEl.innerText = data.sbContactDev;
+    if (contactRoleEl) {
+      contactRoleEl.innerText = data.contactRole;
+    }
+    if (contactNameEl) {
+      contactNameEl.innerText = data.contactName;
     }
 
     const titleContainer = document.getElementById("hero-title");
