@@ -1191,10 +1191,29 @@
     text-align: justify;
   }
 
-  /* ── VIEWER COUNTER ── */
+  /* ── BIONOVA DEVELOPED TEXT (NEW) ── */
+  .footer-dev-team-txt {
+    font-size: 11.5px;
+    font-weight: 800;
+    line-height: 1.6;
+    margin-top: 2px;
+    background: linear-gradient(135deg, #a7f3d0 0%, #34d399 50%, #6ee7b7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.3));
+    display: inline-block;
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-dev-team-txt:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.5));
+  }
+
+  /* ── ADVANCED & MOTION VIEWER COUNTER ── */
   .viewer-counter-box {
-    background: linear-gradient(135deg, rgba(21, 128, 61, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
-    border: 1px solid rgba(52, 211, 153, 0.35);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.75) 100%);
+    border: 1px solid rgba(52, 211, 153, 0.4);
     padding: 7px 14px;
     border-radius: 50px;
     display: inline-flex;
@@ -1202,16 +1221,43 @@
     gap: 10px;
     align-self: flex-start;
     margin-top: 10px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 12px rgba(16, 185, 129, 0.15);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3), 0 0 12px rgba(16, 185, 129, 0.18);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: viewerCardFloat 4s ease-in-out infinite alternate;
+  }
+
+  .viewer-counter-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(35deg);
+    animation: viewerShimmerSweep 5s ease-in-out infinite;
+    pointer-events: none;
   }
 
   .viewer-counter-box:hover {
-    border-color: rgba(52, 211, 153, 0.7);
-    box-shadow: 0 6px 22px rgba(16, 185, 129, 0.35);
-    transform: translateY(-2px);
+    border-color: rgba(52, 211, 153, 0.85);
+    box-shadow: 0 6px 24px rgba(16, 185, 129, 0.4), 0 0 18px rgba(52, 211, 153, 0.3);
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  @keyframes viewerCardFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-3px); }
+  }
+
+  @keyframes viewerShimmerSweep {
+    0%, 30% { left: -150%; }
+    70%, 100% { left: 200%; }
   }
 
   .viewer-pulse-dot {
@@ -1219,14 +1265,16 @@
     height: 8px;
     background-color: #34d399;
     border-radius: 50%;
-    box-shadow: 0 0 8px #34d399;
-    animation: viewerDotPulse 2s infinite ease-in-out;
+    box-shadow: 0 0 10px #34d399;
+    animation: viewerDotPulse 1.8s infinite ease-in-out;
     flex-shrink: 0;
+    position: relative;
   }
 
   @keyframes viewerDotPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.75); }
+    0% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px #34d399; }
+    50% { opacity: 0.35; transform: scale(0.7); box-shadow: 0 0 2px #34d399; }
+    100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px #34d399; }
   }
 
   .viewer-icon {
@@ -1234,6 +1282,12 @@
     color: #34d399;
     display: flex;
     align-items: center;
+    animation: eyeRadar 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes eyeRadar {
+    0%, 100% { transform: scale(1) rotate(0deg); color: #34d399; }
+    50% { transform: scale(1.18) rotate(3deg); color: #6ee7b7; filter: drop-shadow(0 0 4px #34d399); }
   }
 
   .viewer-text { 
@@ -1247,12 +1301,18 @@
     font-weight: 800; 
     color: #ffffff;
     background: linear-gradient(135deg, #059669, #047857);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 3px 12px;
     border-radius: 30px; 
     font-size: 12.5px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3), 0 0 10px rgba(16, 185, 129, 0.25);
     letter-spacing: 0.5px;
+    animation: countGlowPulse 2.8s ease-in-out infinite alternate;
+  }
+
+  @keyframes countGlowPulse {
+    0% { box-shadow: inset 0 1px 3px rgba(0,0,0,0.3), 0 0 4px rgba(16, 185, 129, 0.2); }
+    100% { box-shadow: inset 0 1px 3px rgba(0,0,0,0.3), 0 0 12px rgba(52, 211, 153, 0.6); }
   }
 
   .footer-links-column-container {
@@ -1857,8 +1917,11 @@
         <div class="nova-plant-brand">NovaPlant Platform</div>
         <div class="footer-title-custom" id="foot-main-title-custom">پلاتفۆرمی درەوشاوەی ڕووەک</div>
         <div class="footer-desc-custom" id="foot-desc-custom">پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.</div>
+        
+        <!-- BIONOVA DEVELOPED TEXT -->
+        <div class="footer-dev-team-txt" id="foot-dev-team-text">ئەم پلاتفۆرمە گەشەی پێدراوە لە لایەن تیمی BioNova</div>
 
-        <!-- MODERN VIEWER COUNTER -->
+        <!-- MODERN & MOTION VIEWER COUNTER -->
         <div class="viewer-counter-box" title="Platform Statistics">
           <div class="viewer-pulse-dot"></div>
           <div class="viewer-icon">
@@ -1953,6 +2016,7 @@
       footCol4: "زانیاری پلاتفۆرم",
       footTitle: "پلاتفۆرمی درەوشاوەی ڕووەک",
       footDesc: "پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.",
+      footDevTeam: "ئەم پلاتفۆرمە گەشەی پێدراوە لە لایەن تیمی BioNova",
       footViews: "بینەری پلاتفۆرم:",
       footRights: "سەرجەم مافەکانی پارێزراوە © 2026",
       footDev: "ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد",
@@ -2002,6 +2066,7 @@
       footCol4: "Platform Information",
       footTitle: "Brilliant Plant Science Platform",
       footDesc: "An advanced scientific and academic platform for students, teachers, researchers and farmers using the latest contemporary information.",
+      footDevTeam: "This platform was developed by the BioNova team",
       footViews: "Platform Views:",
       footRights: "All Rights Reserved © 2026",
       footDev: "Scientific Coordinator and Web Developer: Pshtiwan Omer Ahmed",
@@ -2051,6 +2116,7 @@
       footCol4: "معلومات المنصة",
       footTitle: "منصة علم النبات المشرقة",
       footDesc: "منصة علمية وأكاديمية متقدمة للطلاب والمعلمين والباحثين والمزارعين باستخدام أحدث المعلومات المعاصرة.",
+      footDevTeam: "تم تطوير هذه المنصة بواسطة فريق BioNova",
       footViews: "مشاهدات المنصة:",
       footRights: "جميع الحقوق محفوظة © 2026",
       footDev: "المنسق العلمي ومطور الموقع: پشتیوان عمر احمد",
@@ -2116,6 +2182,12 @@
 
     document.getElementById("foot-main-title-custom").innerText = data.footTitle;
     document.getElementById("foot-desc-custom").innerText = data.footDesc;
+    
+    const footDevTeamEl = document.getElementById("foot-dev-team-text");
+    if (footDevTeamEl) {
+      footDevTeamEl.innerText = data.footDevTeam;
+    }
+
     document.getElementById("foot-view-text").innerText = data.footViews;
     document.getElementById("foot-rights").innerText = data.footRights;
     document.getElementById("foot-developer").innerText = data.footDev;
