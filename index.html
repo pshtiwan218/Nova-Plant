@@ -531,7 +531,7 @@
     overflow: hidden;
   }
  
-  /* ── HERO SECTION & UPGRADED LUMINESCENT EYEBROW DESIGN ── */
+  /* ── HERO SECTION & BRAND NEW BIOLUMINESCENT EYEBROW ── */
   .hero {
     min-height: 70vh;
     display: grid;
@@ -590,121 +590,143 @@
     text-align: center;
   }
  
-  /* ── PREMIUM LUMINESCENT EYEBROW DESIGN & MOTION ── */
+  /* ── BIOLUMINESCENT BADGE WITH ADVANCED ANIMATIONS ── */
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 9px 24px;
+    padding: 8px 24px;
     border-radius: 100px;
-    margin-bottom: 1.3rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(200, 230, 176, 0.45) 50%, rgba(16, 185, 129, 0.18) 100%);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    margin-bottom: 1.4rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1.5px solid rgba(16, 185, 129, 0.35);
-    box-shadow: 0 8px 24px rgba(45, 80, 22, 0.08), 0 0 15px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.12), inset 0 0 15px rgba(255, 255, 255, 0.6);
     position: relative;
     overflow: hidden;
     cursor: default;
     opacity: 0;
-    animation: fadeUp .7s .2s ease forwards, glowPulse 4s ease-in-out infinite alternate;
+    animation: fadeUp .7s .2s ease forwards, bioFloat 4.5s ease-in-out infinite alternate;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   body.dark-mode .eyebrow {
-    background: linear-gradient(135deg, rgba(30, 45, 24, 0.85) 0%, rgba(16, 185, 129, 0.25) 50%, rgba(5, 150, 105, 0.15) 100%);
-    border-color: rgba(52, 211, 153, 0.35);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 20px rgba(52, 211, 153, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: rgba(26, 35, 21, 0.75);
+    border-color: rgba(52, 211, 153, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.25), inset 0 0 15px rgba(52, 211, 153, 0.1);
   }
 
+  /* Sweep Light Overlay */
   .eyebrow::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -50%;
     left: -150%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    transform: skewX(-25deg);
-    animation: lightSheenSweep 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform: rotate(35deg);
+    animation: bioShimmer 4.5s ease-in-out infinite;
     pointer-events: none;
   }
 
   body.dark-mode .eyebrow::before {
-    background: linear-gradient(90deg, transparent, rgba(167, 243, 208, 0.35), transparent);
+    background: linear-gradient(90deg, transparent, rgba(167, 243, 208, 0.4), transparent);
   }
 
   .eyebrow:hover {
-    transform: translateY(-4px) scale(1.03);
-    border-color: rgba(16, 185, 129, 0.6);
-    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25), 0 0 25px rgba(52, 211, 153, 0.3);
+    transform: translateY(-5px) scale(1.04);
+    border-color: #10B981;
+    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3), 0 0 25px rgba(52, 211, 153, 0.4);
   }
 
-  .eyebrow .eyebrow-icon {
+  .eyebrow-icon-wrap {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #10B981, #2D5016);
+    background: linear-gradient(135deg, #10B981, #047857);
     color: #ffffff;
-    padding: 4px;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
-    animation: plantOrbPulse 3s ease-in-out infinite;
   }
 
-  body.dark-mode .eyebrow .eyebrow-icon {
-    background: linear-gradient(135deg, #34d399, #059669);
-    box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+  .eyebrow-icon-wrap svg {
+    width: 16px;
+    height: 16px;
+    animation: leafSway 3s ease-in-out infinite alternate;
   }
 
-  .eyebrow .eyebrow-icon svg {
-    width: 100%;
-    height: 100%;
-    stroke: currentColor;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  .eyebrow-pulse-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1.5px solid #34d399;
+    animation: ringExpand 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    pointer-events: none;
   }
-  
+
   #hero-eyebrow {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     font-weight: 800;
-    letter-spacing: 0.4px;
-    background: linear-gradient(120deg, #1e3a1a 0%, #2D5016 25%, #3D9A3E 50%, #10B981 75%, #2D5016 100%);
+    letter-spacing: 0.5px;
+    background: linear-gradient(120deg, #1e3a1a 0%, #10B981 30%, #4A7C2F 60%, #10B981 100%);
     background-size: 250% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: plantTextFlow 5s ease infinite;
+    animation: textShineShift 4s ease infinite;
     display: inline-block;
   }
 
   body.dark-mode #hero-eyebrow {
-    background: linear-gradient(120deg, #ffffff 0%, #a7f3d0 30%, #34d399 60%, #6ee7b7 85%, #ffffff 100%);
+    background: linear-gradient(120deg, #ffffff 0%, #6ee7b7 30%, #34d399 60%, #a7f3d0 100%);
     background-size: 250% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  @keyframes glowPulse {
-    0%   { transform: translateY(0); box-shadow: 0 8px 24px rgba(45, 80, 22, 0.08), 0 0 10px rgba(16, 185, 129, 0.1); }
-    100% { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(45, 80, 22, 0.12), 0 0 20px rgba(16, 185, 129, 0.25); }
+  .eyebrow-sparkle {
+    font-size: 14px;
+    color: #facc15;
+    display: inline-flex;
+    align-items: center;
+    animation: sparkleTwinkle 2.5s ease-in-out infinite alternate;
   }
 
-  @keyframes lightSheenSweep {
-    0%, 35% { left: -150%; }
-    65%, 100% { left: 150%; }
+  @keyframes bioFloat {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
   }
 
-  @keyframes plantTextFlow {
+  @keyframes bioShimmer {
+    0%, 25% { left: -150%; }
+    60%, 100% { left: 200%; }
+  }
+
+  @keyframes leafSway {
+    0%   { transform: rotate(-8deg) scale(0.95); }
+    100% { transform: rotate(12deg) scale(1.08); }
+  }
+
+  @keyframes ringExpand {
+    0%   { transform: scale(0.8); opacity: 0.9; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  @keyframes textShineShift {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
 
-  @keyframes plantOrbPulse {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    50%      { transform: scale(1.15) rotate(12deg); }
+  @keyframes sparkleTwinkle {
+    0%   { transform: scale(0.8) rotate(0deg); opacity: 0.5; }
+    50%  { transform: scale(1.2) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 6px #facc15); }
+    100% { transform: scale(0.9) rotate(90deg); opacity: 0.6; }
   }
  
   .hero-text h1 {
@@ -1720,14 +1742,16 @@
 <section class="hero">
   <div class="hero-text">
     <div class="eyebrow">
-      <span class="eyebrow-icon">
+      <span class="eyebrow-icon-wrap">
+        <span class="eyebrow-pulse-ring"></span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"/>
-          <path d="M12 6a6 6 0 0 1 6 6c0 3.314-2.686 6-6 6s-6-2.686-6-6a6 6 0 0 1 6-6z"/>
-          <path d="M12 8v8M8 12h8"/>
+          <path d="M12 22V12M12 12C12 7 7 4 2 6c0 5 3 9 10 6M12 12c0-5 5-8 10-6-1 5-4 9-10 6"/>
         </svg>
       </span>
       <span id="hero-eyebrow">زانستی درەوشاوەی ڕووەک</span>
+      <span class="eyebrow-sparkle">
+        <i class="ph-fill ph-sparkle"></i>
+      </span>
     </div>
 
     <h1 id="hero-title">
@@ -1834,7 +1858,7 @@
         <div class="footer-title-custom" id="foot-main-title-custom">پلاتفۆرمی درەوشاوەی ڕووەک</div>
         <div class="footer-desc-custom" id="foot-desc-custom">پلاتفۆرمی زانستی و ئەکادیمی پێشکەوتوو بۆ خوێندکاران، مامۆستایان, توێژەران و جووتیاران بە بەکارهێنانی تازەترین زانیاری سەردەم.</div>
 
-        <!-- NEW MODERN VIEWER COUNTER -->
+        <!-- MODERN VIEWER COUNTER -->
         <div class="viewer-counter-box" title="Platform Statistics">
           <div class="viewer-pulse-dot"></div>
           <div class="viewer-icon">
