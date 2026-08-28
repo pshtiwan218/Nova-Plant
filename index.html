@@ -74,6 +74,13 @@
     background: rgba(18, 24, 14, 0.8);
     border-bottom: 1px solid rgba(16,185,129,0.1);
   }
+
+  .nav-left-group {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
  
   .logo {
     display: flex; align-items: center; gap: .5rem;
@@ -170,6 +177,7 @@
  
   .theme-switcher-container, .lang-switcher-container {
     display: flex;
+    align-items: center;
     background: var(--toggle-bg);
     border: 1px solid rgba(0,0,0,0.05);
     padding: 2px;
@@ -185,7 +193,7 @@
   .lang-switcher-container button {
     background: none;
     border: none;
-    padding: .35rem .7rem;
+    padding: .35rem .65rem;
     font-size: .75rem;
     font-weight: 600;
     color: var(--text-muted);
@@ -193,6 +201,9 @@
     border-radius: 50px;
     transition: color 0.3s ease, background 0.3s ease;
     font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   body.dark-mode .theme-switcher-container button,
   body.dark-mode .lang-switcher-container button {
@@ -204,6 +215,15 @@
     background: var(--toggle-active);
     color: #ffffff !important;
     box-shadow: 0 2px 6px rgba(0,200,150,0.3);
+  }
+
+  .theme-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    display: block;
   }
 
   /* ── MENU TOGGLE BUTTON ── */
@@ -1268,23 +1288,25 @@
 
 <nav class="navbar">
 
-  <!-- MENU BUTTON -->
-  <button
-    class="menu-toggle-btn"
-    id="menu-toggle"
-    aria-label="Open Menu"
-    aria-expanded="false"
-    type="button"
-  >
-    <i class="ph ph-list"></i>
-  </button>
+  <div class="nav-left-group">
+    <!-- MENU BUTTON -->
+    <button
+      class="menu-toggle-btn"
+      id="menu-toggle"
+      aria-label="Open Menu"
+      aria-expanded="false"
+      type="button"
+    >
+      <i class="ph ph-list"></i>
+    </button>
 
-  <a class="logo" href="#">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 22V12M12 12C12 7 7 4 2 6c0 5 3 9 10 6M12 12c0-5 5-8 10-6-1 5-4 9-10 6"/>
-    </svg>
-    <span>NovaPlant</span>
-  </a>
+    <a class="logo" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22V12M12 12C12 7 7 4 2 6c0 5 3 9 10 6M12 12c0-5 5-8 10-6-1 5-4 9-10 6"/>
+      </svg>
+      <span>NovaPlant</span>
+    </a>
+  </div>
  
   <div class="search-container" id="search-container">
     <div class="search-wrapper">
@@ -1305,14 +1327,30 @@
 
   <div class="nav-actions">
     <div class="theme-switcher-container">
-      <button class="theme-btn active" id="theme-light-btn" onclick="setTheme('light')">Light</button>
-      <button class="theme-btn" id="theme-dark-btn" onclick="setTheme('dark')">Dark</button>
+      <button class="theme-btn active" id="theme-light-btn" onclick="setTheme('light')" aria-label="Light Mode">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <button class="theme-btn" id="theme-dark-btn" onclick="setTheme('dark')" aria-label="Dark Mode">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
     </div>
 
     <div class="lang-switcher-container">
-      <button class="lang-btn" id="btn-ar" onclick="changeLanguage('ar')">عربي</button>
-      <button class="lang-btn" id="btn-en" onclick="changeLanguage('en')">Eng</button>
-      <button class="lang-btn active" id="btn-ku" onclick="changeLanguage('ku')">کوردی</button>
+      <button class="lang-btn" id="btn-ar" onclick="changeLanguage('ar')">عر</button>
+      <button class="lang-btn" id="btn-en" onclick="changeLanguage('en')">En</button>
+      <button class="lang-btn active" id="btn-ku" onclick="changeLanguage('ku')">کو</button>
     </div>
   </div>
 </nav>
@@ -1509,8 +1547,6 @@
       secTitle: "بەشەکانی پلاتفۆرم",
       secSubtitle: "لێرەوە بڕوانە ناو کایە جیاوازەکانی زانستی ڕووەک و سەرچاوەکان",
       btn: "دەست پێبکە",
-      lightBtn: "ڕووناک",
-      darkBtn: "تاریک",
       footCol1: "پلاتفۆرم",
       footCol2: "بەشەکانی پلاتفۆرم",
       footCol3: "لینکی پلاتفۆرمی تر",
@@ -1555,8 +1591,6 @@
       secTitle: "Platform Chapters",
       secSubtitle: "Explore different areas of plant science and scientific resources from here.",
       btn: "Get Started",
-      lightBtn: "Light",
-      darkBtn: "Dark",
       footCol1: "Platform",
       footCol2: "Platform Chapters",
       footCol3: "Other Platform Links",
@@ -1601,8 +1635,6 @@
       secTitle: "أقسام المنصة",
       secSubtitle: "استکشف المجالات المختلفة لعلوم النبات والموارد العلمية من هنا.",
       btn: "ابدأ الآن",
-      lightBtn: "فاتح",
-      darkBtn: "مظلم",
       footCol1: "المنصة",
       footCol2: "أقسام المنصة",
       footCol3: "روابط منصات أخرى",
@@ -1653,8 +1685,6 @@
     document.getElementById("hero-eyebrow").innerText = data.eyebrow;
     document.getElementById("hero-desc-txt").innerText = data.heroDesc;
     document.getElementById("btn-txt").innerText = data.btn;
-    document.getElementById("theme-light-btn").innerText = data.lightBtn;
-    document.getElementById("theme-dark-btn").innerText = data.darkBtn;
     document.getElementById("sec-title").innerText = data.secTitle;
     document.getElementById("sec-subtitle").innerText = data.secSubtitle;
 
