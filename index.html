@@ -477,6 +477,11 @@
     color: #ffffff;
   }
 
+  .instagram-wrapper {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: #ffffff;
+  }
+
   .phone-wrapper {
     background: #10b981;
     color: #ffffff;
@@ -487,6 +492,7 @@
   }
 
   .contact-item-row:hover .facebook-wrapper { color: #1877f2; }
+  .contact-item-row:hover .instagram-wrapper { color: #d6249f; }
   .contact-item-row:hover .phone-wrapper { color: #10b981; }
 
   .phone-numbers-group {
@@ -1445,6 +1451,7 @@
     </li>
   </ul>
 
+  <!-- ── SIDEBAR CONTACT SECTION ── -->
   <div class="sidebar-contact-card" id="sidebar-contact-card-box">
     <div class="contact-title" id="sb-contact-title">
       <i class="ph ph-address-book"></i> پەیوەندی
@@ -1472,6 +1479,31 @@
           <a href="tel:07728602388" style="text-decoration:none; color:inherit;">07728602388</a>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ── SIDEBAR BIONOVA TEAM SECTION (NEW) ── -->
+  <div class="sidebar-contact-card" style="margin-top: 15px;">
+    <div class="contact-title" id="sb-team-title">
+      <i class="ph ph-users-three"></i> تیمی BioNova
+    </div>
+
+    <div class="contact-links-box">
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/share/1Er9ncDSxW/?mibextid=wwXIfr" target="_blank" class="contact-item-row" title="Facebook">
+        <div class="contact-icon-wrapper facebook-wrapper">
+          <i class="ph ph-facebook-logo"></i>
+        </div>
+        <span>BioNova</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/bionova.group?igsi=MWltdTYzZjlwMDZuNg==" target="_blank" class="contact-item-row" title="Instagram">
+        <div class="contact-icon-wrapper instagram-wrapper">
+          <i class="ph ph-instagram-logo"></i>
+        </div>
+        <span>bionova.group</span>
+      </a>
     </div>
   </div>
 </aside>
@@ -1704,7 +1736,6 @@
       <div class="foot-rights-text" id="foot-rights">سەرجەم مافەکانی پارێزراوە © 2026</div>
       
       <div class="footer-dev-container">
-        <!-- New Contact Link placed beside developer text -->
         <button type="button" class="footer-contact-btn" id="foot-contact-btn" onclick="openSidebarAndScrollToContact()">
           <i class="ph ph-address-book"></i>
           <span id="foot-contact-txt">پەیوەندی</span>
@@ -1757,6 +1788,7 @@
       contactRole: "ڕێکخەری زانستی و گەشەپێدەری وێب:",
       contactName: "پشتیوان عمر احمد",
       footContactBtn: "پەیوەندی",
+      teamTitle: "تیمی BioNova",
 
       footAcademic: `<div><span class="yellow-tag">• بەش :</span> ئینگلیزی</div>
                      <div><span class="yellow-tag">• کۆلێژ :</span> پەروەردە</div>
@@ -1805,6 +1837,7 @@
       contactRole: "Scientific Coordinator & Web Dev:",
       contactName: "Pshtiwan Omer Ahmed",
       footContactBtn: "Contact",
+      teamTitle: "BioNova Team",
 
       footAcademic: `<div><span class="yellow-tag">• Department:</span> English</div>
                      <div><span class="yellow-tag">• College:</span> Education</div>
@@ -1853,6 +1886,7 @@
       contactRole: "المنسق العلمي ومطور الموقع:",
       contactName: "پشتیوان عمر احمد",
       footContactBtn: "اتصل بنا",
+      teamTitle: "فريق BioNova",
 
       footAcademic: `<div><span class="yellow-tag">• القسم :</span> اللغة الإنجليزية</div>
                      <div><span class="yellow-tag">• الكلية :</span> التربية</div>
@@ -1933,6 +1967,12 @@
     }
     if (contactNameEl) {
       contactNameEl.innerText = data.contactName;
+    }
+
+    // Sidebar Team Texts
+    const teamTitleEl = document.getElementById("sb-team-title");
+    if (teamTitleEl) {
+      teamTitleEl.innerHTML = `<i class="ph ph-users-three"></i> ${data.teamTitle}`;
     }
 
     const titleContainer = document.getElementById("hero-title");
