@@ -1482,7 +1482,20 @@
 </footer>
 
 <script>
-  const fallbackImg = "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?q=80&w=600";
+  const chapterImages = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcD0dwktu2-ugvnTfEVIJYDGShYwDD4nN4qyHw4GgeA&s=10",
+    "https://i.pinimg.com/1200x/3b/36/4f/3b364fa7bff264ed7c9f2e25a4031fd2.jpg",
+    "https://i.pinimg.com/736x/25/2f/15/252f1504059be9c116761959712cb754.jpg",
+    "https://i.pinimg.com/1200x/9f/12/ba/9f12babc8c35a109796dedea73a9479f.jpg",
+    "https://i.pinimg.com/736x/e6/6a/43/e66a43cc745d62bc7a96162221745415.jpg",
+    "https://i.pinimg.com/1200x/9e/4a/6f/9e4a6f695123504f1aabffe6a1c039af.jpg",
+    "https://www.pinterest.com/pin/280208408060490534/",
+    "https://i.pinimg.com/1200x/8a/64/1e/8a641e68121de8e2f4b6da31bb4e3aca.jpg",
+    "https://www.pinterest.com/pin/616782111510064841/",
+    "https://i.pinimg.com/736x/77/79/e6/7779e659b1340704a856776dc44c793c.jpg",
+    "https://i.pinimg.com/736x/f5/dd/12/f5dd1221a74a510e7f052ce8dba17737.jpg",
+    "https://i.pinimg.com/236x/3c/56/c9/3c56c969a0cc95fa5fb0cb483f711413.jpg"
+  ];
 
   const translations = {
     ku: {
@@ -1516,78 +1529,18 @@
                      <div><span class="yellow-tag">• زمان :</span> کوردی - عربی - English</div>`,
 
       chapters: [
-        {
-          ch: "١",
-          title: "زانیاری زیاتر",
-          desc: "سەرەتایەک لەسەر ژینگەی ڕووەکە جیاوازەکان.",
-          img: fallbackImg
-        },
-        {
-          ch: "٢",
-          title: "فەرهەنگی زاراوەکانی ڕووەک",
-          desc: "چەمک و زاراوە گرنگەکانی زانستی فۆڕمی ڕووەک.",
-          img: fallbackImg
-        },
-        {
-          ch: "٣",
-          title: "پێکهاتەی ناوەکی و شێوەناسی ڕووەک",
-          desc: "پێکهاتەی ناوەوەی ڕووەکە جیاوازەکان و خانەکان.",
-          img: fallbackImg
-        },
-        {
-          ch: "٤",
-          title: "پۆلێن کردن و جۆرەکانی ڕووەک",
-          desc: "پۆلێنکردنی خێزانە سەرەکیەکانی جیهانی ڕووەک.",
-          img: fallbackImg
-        },
-        {
-          ch: "٥",
-          title: "کارئەندامزانی و کارلێکەکانی ڕووەک",
-          desc: "پڕۆسە کیمیاییەکان و کارلێکەکانی ناو ڕووەک.",
-          img: fallbackImg
-        },
-        {
-          ch: "٦",
-          title: "تەکنەلۆجیا لە زانستی ڕووەک",
-          desc: "بەکارهێنانی زیرەکی دەستکرد و تەکنەلۆژیای جینی لە ڕووەکدا.",
-          img: fallbackImg
-        },
-        {
-          ch: "٧",
-          title: "نەخۆشییەکانی ڕووەک و نیشانە دەرەکییەکان",
-          desc: "ناسینەوەی قارچک، بەکتریا و نیشانەکانی کەمبوونی ماددە خۆراکیەکان.",
-          img: fallbackImg
-        },
-        {
-          ch: "٨",
-          title: "کشتوکاڵی کرداری",
-          desc: "ئامادەکردنی خاک، چاندنی تۆو, و بەڕێوبردنی کێڵگەکان.",
-          img: fallbackImg
-        },
-        {
-          ch: "٩",
-          title: "جیهانی نەبینراوی ڕووەک",
-          desc: "شێوازی کارکردنی ئامێرەکان لە تاقیگەدا.",
-          img: fallbackImg
-        },
-        {
-          ch: "١٠",
-          title: "توێژینەوە و وتار",
-          desc: "بابەتە زانستییە بڵاوکراوەکانی پلاتفۆرمەکەمان.",
-          img: fallbackImg
-        },
-        {
-          ch: "١١",
-          title: "ڤیدیۆیی فێرکاری",
-          desc: "ڤیدیۆ و ڕوونکردنەوەی فێرکاری بۆ بابەتە جیاوازەکان.",
-          img: fallbackImg
-        },
-        {
-          ch: "١٢",
-          title: "کویز و ڕاهێنان",
-          desc: "تاقیکردنەوەی زانیاری و تواناکانت بە شێوەی ئۆنلاین.",
-          img: fallbackImg
-        }
+        { ch: "١", title: "زانیاری زیاتر", desc: "سەرەتایەک لەسەر ژینگەی ڕووەکە جیاوازەکان.", img: chapterImages[0] },
+        { ch: "٢", title: "فەرهەنگی زاراوەکانی ڕووەک", desc: "چەمک و زاراوە گرنگەکانی زانستی فۆڕمی ڕووەک.", img: chapterImages[1] },
+        { ch: "٣", title: "پێکهاتەی ناوەکی و شێوەناسی ڕووەک", desc: "پێکهاتەی ناوەوەی ڕووەکە جیاوازەکان و خانەکان.", img: chapterImages[2] },
+        { ch: "٤", title: "پۆلێن کردن و جۆرەکانی ڕووەک", desc: "پۆلێنکردنی خێزانە سەرەکیەکانی جیهانی ڕووەک.", img: chapterImages[3] },
+        { ch: "٥", title: "کارئەندامزانی و کارلێکەکانی ڕووەک", desc: "پڕۆسە کیمیاییەکان و کارلێکەکانی ناو ڕووەک.", img: chapterImages[4] },
+        { ch: "٦", title: "تەکنەلۆجیا لە زانستی ڕووەک", desc: "بەکارهێنانی زیرەکی دەستکرد و تەکنەلۆژیای جینی لە ڕووەکدا.", img: chapterImages[5] },
+        { ch: "٧", title: "نەخۆشییەکانی ڕووەک و نیشانە دەرەکییەکان", desc: "ناسینەوەی قارچک، بەکتریا و نیشانەکانی کەمبوونی ماددە خۆراکیەکان.", img: chapterImages[6] },
+        { ch: "٨", title: "کشتوکاڵی کرداری", desc: "ئامادەکردنی خاک، چاندنی تۆو, و بەڕێوبردنی کێڵگەکان.", img: chapterImages[7] },
+        { ch: "٩", title: "جیهانی نەبینراوی ڕووەک", desc: "شێوازی کارکردنی ئامێرەکان لە تاقیگەدا.", img: chapterImages[8] },
+        { ch: "١٠", title: "توێژینەوە و وتار", desc: "بابەتە زانستییە بڵاوکراوەکانی پلاتفۆرمەکەمان.", img: chapterImages[9] },
+        { ch: "١١", title: "ڤیدیۆیی فێرکاری", desc: "ڤیدیۆ و ڕوونکردنەوەی فێرکاری بۆ بابەتە جیاوازەکان.", img: chapterImages[10] },
+        { ch: "١٢", title: "کویز و ڕاهێنان", desc: "تاقیکردنەوەی زانیاری و تواناکانت بە شێوەی ئۆنلاین.", img: chapterImages[11] }
       ]
     },
 
@@ -1622,18 +1575,18 @@
                      <div><span class="yellow-tag">• Language:</span> Kurdish - Arabic - English</div>`,
 
       chapters: [
-        { ch: "1", title: "More Information", desc: "An introduction to different plant environments.", img: fallbackImg },
-        { ch: "2", title: "Plant Terminology Dictionary", desc: "Important concepts and terms in plant morphology.", img: fallbackImg },
-        { ch: "3", title: "Internal Structure and Plant Morphology", desc: "Internal structures, cells and tissues of different plants.", img: fallbackImg },
-        { ch: "4", title: "Plant Classification and Diversity", desc: "Classification of the major plant groups.", img: fallbackImg },
-        { ch: "5", title: "Plant Physiology and Biochemistry", desc: "Biochemical processes and interactions inside plants.", img: fallbackImg },
-        { ch: "6", title: "Modern Technology in Plant Science", desc: "Using artificial intelligence and genetic technologies in modern plant science.", img: fallbackImg },
-        { ch: "7", title: "Plant Diseases and External Symptoms", desc: "Identification of fungi, bacteria and nutrient deficiency symptoms.", img: fallbackImg },
-        { ch: "8", title: "Applied Agricultural Processes", desc: "Soil preparation, seed planting and field management.", img: fallbackImg },
-        { ch: "9", title: "Plant Laboratory Guide", desc: "How to operate laboratory equipment in biological workflows.", img: fallbackImg },
-        { ch: "10", title: "Research and Articles", desc: "Scientific articles and publications available on our platform.", img: fallbackImg },
-        { ch: "11", title: "Video Explanations", desc: "Watch practical demonstrations and educational videos here.", img: fallbackImg },
-        { ch: "12", title: "Quizzes and Tests", desc: "Test your biological knowledge and skills online.", img: fallbackImg }
+        { ch: "1", title: "More Information", desc: "An introduction to different plant environments.", img: chapterImages[0] },
+        { ch: "2", title: "Plant Terminology Dictionary", desc: "Important concepts and terms in plant morphology.", img: chapterImages[1] },
+        { ch: "3", title: "Internal Structure and Plant Morphology", desc: "Internal structures, cells and tissues of different plants.", img: chapterImages[2] },
+        { ch: "4", title: "Plant Classification and Diversity", desc: "Classification of the major plant groups.", img: chapterImages[3] },
+        { ch: "5", title: "Plant Physiology and Biochemistry", desc: "Biochemical processes and interactions inside plants.", img: chapterImages[4] },
+        { ch: "6", title: "Modern Technology in Plant Science", desc: "Using artificial intelligence and genetic technologies in modern plant science.", img: chapterImages[5] },
+        { ch: "7", title: "Plant Diseases and External Symptoms", desc: "Identification of fungi, bacteria and nutrient deficiency symptoms.", img: chapterImages[6] },
+        { ch: "8", title: "Applied Agricultural Processes", desc: "Soil preparation, seed planting and field management.", img: chapterImages[7] },
+        { ch: "9", title: "Plant Laboratory Guide", desc: "How to operate laboratory equipment in biological workflows.", img: chapterImages[8] },
+        { ch: "10", title: "Research and Articles", desc: "Scientific articles and publications available on our platform.", img: chapterImages[9] },
+        { ch: "11", title: "Video Explanations", desc: "Watch practical demonstrations and educational videos here.", img: chapterImages[10] },
+        { ch: "12", title: "Quizzes and Tests", desc: "Test your biological knowledge and skills online.", img: chapterImages[11] }
       ]
     },
 
@@ -1668,18 +1621,18 @@
                      <div><span class="yellow-tag">• اللغة :</span> الكردية - العربية - الإنجليزية</div>`,
 
       chapters: [
-        { ch: "١", title: "مزيد من المعلومات", desc: "مقدمة عامة حول بيئات النباتات المختلفة وطبيعتها.", img: fallbackImg },
-        { ch: "٢", title: "قاموس مصطلحات النبات", desc: "أهم المصطلحات والمفاهيم في مورفولوجيا النبات.", img: fallbackImg },
-        { ch: "٣", title: "تشريح وشكل النبات", desc: "الهياكل الخلوية الداخلية والأنسجة للأشكال النباتية.", img: fallbackImg },
-        { ch: "٤", title: "تصنيف وتنوع النبات", desc: "تصنيف الممالك الرئيسية في عالم النبات المتنوع.", img: fallbackImg },
-        { ch: "٥", title: "فسيولوجيا النبات والكيمياء الحيوية", desc: "الأنشطة والعمليات الكيميائية الحيوية داخل النبات.", img: fallbackImg },
-        { ch: "٦", title: "التكنولوجيا الحديثة في علم النبات", desc: "استخدام الذكاء الاصطناعي وتقنيات الجينات في علم النبات الحديث.", img: fallbackImg },
-        { ch: "٧", title: "أمراض النبات والأعراض الخارجية", desc: "التعرف على الفطريات، البكتيريا، وعلامات نقص العناصر الغذائية.", img: fallbackImg },
-        { ch: "٨", title: "العمليات الزراعية التطبيقية", desc: "تحضير التربة، زراعة البذور، وإدارة العمليات الحقلية.", img: fallbackImg },
-        { ch: "٩", title: "دليل المختبر والتكنولوجيا", desc: "كيفية تشغيل الأجهزة المختبرية في سير العمل البيولوجي.", img: fallbackImg },
-        { ch: "١٠", title: "الأبحاث والمقالات", desc: "المقالات العلمية والمنشورات المتاحة على منصتنا.", img: fallbackImg },
-        { ch: "١١", title: "شروحات مرئية", desc: "شاهد العروض العملية والمقاطع التعليمية هنا.", img: fallbackImg },
-        { ch: "١٢", title: "الاختبارات والكويزات", desc: "اختبر مهاراتك ومعرفتك البيولوجية مباشرة عبر الإنترنت.", img: fallbackImg }
+        { ch: "١", title: "مزيد من المعلومات", desc: "مقدمة عامة حول بيئات النباتات المختلفة وطبيعتها.", img: chapterImages[0] },
+        { ch: "٢", title: "قاموس مصطلحات النبات", desc: "أهم المصطلحات والمفاهيم في مورفولوجيا النبات.", img: chapterImages[1] },
+        { ch: "٣", title: "تشريح وشكل النبات", desc: "الهياكل الخلوية الداخلية والأنسجة للأشكال النباتية.", img: chapterImages[2] },
+        { ch: "٤", title: "تصنيف وتنوع النبات", desc: "تصنيف الممالك الرئيسية في عالم النبات المتنوع.", img: chapterImages[3] },
+        { ch: "٥", title: "فسيولوجيا النبات والكيمياء الحيوية", desc: "الأنشطة والعمليات الكيميائية الحيوية داخل النبات.", img: chapterImages[4] },
+        { ch: "٦", title: "التكنولوجيا الحديثة في علم النبات", desc: "استخدام الذكاء الاصطناعي وتقنيات الجينات في علم النبات الحديث.", img: chapterImages[5] },
+        { ch: "٧", title: "أمراض النبات والأعراض الخارجية", desc: "التعرف على الفطريات، البكتيريا، وعلامات نقص العناصر الغذائية.", img: chapterImages[6] },
+        { ch: "٨", title: "العمليات الزراعية التطبيقية", desc: "تحضير التربة، زراعة البذور، وإدارة العمليات الحقلية.", img: chapterImages[7] },
+        { ch: "٩", title: "دليل المختبر والتكنولوجيا", desc: "كيفية تشغيل الأجهزة المختبرية في سير العمل البيولوجي.", img: chapterImages[8] },
+        { ch: "١٠", title: "الأبحاث والمقالات", desc: "المقالات العلمية والمنشورات المتاحة على منصتنا.", img: chapterImages[9] },
+        { ch: "١١", title: "شروحات مرئية", desc: "شاهد العروض العملية والمقاطع التعليمية هنا.", img: chapterImages[10] },
+        { ch: "١٢", title: "الاختبارات والكويزات", desc: "اختبر مهاراتك ومعرفتك البيولوجية مباشرة عبر الإنترنت.", img: chapterImages[11] }
       ]
     }
   };
