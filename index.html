@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaPlant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -531,7 +531,7 @@
     overflow: hidden;
   }
  
-  /* ── HERO ── */
+  /* ── HERO SECTION & UPGRADED LUMINESCENT EYEBROW DESIGN ── */
   .hero {
     min-height: 70vh;
     display: grid;
@@ -590,63 +590,121 @@
     text-align: center;
   }
  
+  /* ── PREMIUM LUMINESCENT EYEBROW DESIGN & MOTION ── */
   .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.95rem; font-weight: 700;
-    color: var(--green-dark);
-    background: linear-gradient(120deg, rgba(16,185,129,0.12), rgba(74,124,47,0.18), rgba(16,185,129,0.12));
-    background-size: 220% 100%;
-    padding: 8px 20px;
-    border-radius: 50px;
-    margin-bottom: 1.2rem;
-    letter-spacing: 0.3px;
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.08);
+    gap: 12px;
+    padding: 9px 24px;
+    border-radius: 100px;
+    margin-bottom: 1.3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(200, 230, 176, 0.45) 50%, rgba(16, 185, 129, 0.18) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
+    box-shadow: 0 8px 24px rgba(45, 80, 22, 0.08), 0 0 15px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
     opacity: 0;
-    animation: fadeUp .7s .3s ease forwards, eyebrowSheen 5s linear infinite 1s, eyebrowFloating 3s ease-in-out infinite alternate;
-    transition: transform 0.3s ease;
+    animation: fadeUp .7s .2s ease forwards, glowPulse 4s ease-in-out infinite alternate;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
-  body.dark-mode .eyebrow { color: #86efac; }
+
+  body.dark-mode .eyebrow {
+    background: linear-gradient(135deg, rgba(30, 45, 24, 0.85) 0%, rgba(16, 185, 129, 0.25) 50%, rgba(5, 150, 105, 0.15) 100%);
+    border-color: rgba(52, 211, 153, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 20px rgba(52, 211, 153, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .eyebrow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: skewX(-25deg);
+    animation: lightSheenSweep 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+  }
+
+  body.dark-mode .eyebrow::before {
+    background: linear-gradient(90deg, transparent, rgba(167, 243, 208, 0.35), transparent);
+  }
+
+  .eyebrow:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25), 0 0 25px rgba(52, 211, 153, 0.3);
+  }
+
   .eyebrow .eyebrow-icon {
     display: inline-flex;
-    width: 18px; height: 18px;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10B981, #2D5016);
+    color: #ffffff;
+    padding: 4px;
     flex-shrink: 0;
-    animation: eyebrowIconPulse 2.4s ease-in-out infinite;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    animation: plantOrbPulse 3s ease-in-out infinite;
   }
-  .eyebrow .eyebrow-icon svg { width: 100%; height: 100%; stroke: currentColor; }
+
+  body.dark-mode .eyebrow .eyebrow-icon {
+    background: linear-gradient(135deg, #34d399, #059669);
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+  }
+
+  .eyebrow .eyebrow-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  }
   
   #hero-eyebrow {
-    background: linear-gradient(135deg, #2D5016, #3D9A3E, #10B981);
-    background-size: 200% auto;
+    font-size: 0.98rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    background: linear-gradient(120deg, #1e3a1a 0%, #2D5016 25%, #3D9A3E 50%, #10B981 75%, #2D5016 100%);
+    background-size: 250% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: eyebrowTextGlow 4s ease infinite;
+    animation: plantTextFlow 5s ease infinite;
     display: inline-block;
   }
+
   body.dark-mode #hero-eyebrow {
-    background: linear-gradient(135deg, #ffffff, #a7f3d0, #34d399);
-    background-size: 200% auto;
+    background: linear-gradient(120deg, #ffffff 0%, #a7f3d0 30%, #34d399 60%, #6ee7b7 85%, #ffffff 100%);
+    background-size: 250% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  @keyframes eyebrowFloating {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-4px); }
+  @keyframes glowPulse {
+    0%   { transform: translateY(0); box-shadow: 0 8px 24px rgba(45, 80, 22, 0.08), 0 0 10px rgba(16, 185, 129, 0.1); }
+    100% { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(45, 80, 22, 0.12), 0 0 20px rgba(16, 185, 129, 0.25); }
   }
-  @keyframes eyebrowTextGlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+  @keyframes lightSheenSweep {
+    0%, 35% { left: -150%; }
+    65%, 100% { left: 150%; }
   }
-  @keyframes eyebrowSheen {
+
+  @keyframes plantTextFlow {
     0%   { background-position: 0% 50%; }
-    100% { background-position: 220% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-  @keyframes eyebrowIconPulse {
+
+  @keyframes plantOrbPulse {
     0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.18) rotate(-8deg); }
+    50%      { transform: scale(1.15) rotate(12deg); }
   }
  
   .hero-text h1 {
@@ -1077,7 +1135,7 @@
     display: inline-block;
   }
 
-  /* ── BRAND TITLES WITH NOVAENTOMO MOTION/DESIGN ── */
+  /* ── BRAND TITLES ── */
   .nova-plant-brand {
     font-size: 19px !important;
     font-weight: 800 !important;
@@ -1111,7 +1169,7 @@
     text-align: justify;
   }
 
-  /* ── UPGRADED MODERN VIEWER COUNTER ── */
+  /* ── VIEWER COUNTER ── */
   .viewer-counter-box {
     background: linear-gradient(135deg, rgba(21, 128, 61, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
     border: 1px solid rgba(52, 211, 153, 0.35);
@@ -1661,16 +1719,16 @@
  
 <section class="hero">
   <div class="hero-text">
-    <span class="eyebrow">
+    <div class="eyebrow">
       <span class="eyebrow-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"/>
           <path d="M12 6a6 6 0 0 1 6 6c0 3.314-2.686 6-6 6s-6-2.686-6-6a6 6 0 0 1 6-6z"/>
           <path d="M12 8v8M8 12h8"/>
         </svg>
       </span>
       <span id="hero-eyebrow">زانستی درەوشاوەی ڕووەک</span>
-    </span>
+    </div>
 
     <h1 id="hero-title">
       <span>NovaPlant</span>
@@ -1908,7 +1966,7 @@
       tagStr: "Chapter ",
       readMore: "Read More",
       searchPlaceholder: "Search chapters...",
-      eyebrow: "Brilliant Plant Science",
+      eyebrow: "Luminescent Plant Science",
       title: "NovaPlant",
       heroDesc: "An advanced scientific and academic platform for students, teachers, researchers and farmers using the latest contemporary information.",
       secTitle: "Platform Chapters",
@@ -1957,7 +2015,7 @@
       tagStr: "الفصل ",
       readMore: "قراءة المزيد",
       searchPlaceholder: "البحث عن الأقسام...",
-      eyebrow: "علم النبات المشرق",
+      eyebrow: "علم النبات المتألق",
       title: "NovaPlant",
       heroDesc: "منصة علمية وأكاديمية متقدمة للطلاب والمعلمين والباحثين والمزارعين باستخدام أحدث المعلومات المعاصرة.",
       secTitle: "أقسام المنصة",
@@ -2038,13 +2096,11 @@
     document.getElementById("foot-rights").innerText = data.footRights;
     document.getElementById("foot-developer").innerText = data.footDev;
 
-    // Footer Contact Button Text
     const footContactTxt = document.getElementById("foot-contact-txt");
     if (footContactTxt) {
       footContactTxt.innerText = data.footContactBtn;
     }
 
-    // Sidebar Contact Texts
     const contactTitleEl = document.getElementById("sb-contact-title");
     const contactRoleEl = document.getElementById("sb-contact-role");
     const contactNameEl = document.getElementById("sb-contact-name");
@@ -2059,7 +2115,6 @@
       contactNameEl.innerText = data.contactName;
     }
 
-    // Sidebar Team Texts
     const teamTitleEl = document.getElementById("sb-team-title");
     if (teamTitleEl) {
       teamTitleEl.innerHTML = `<i class="ph ph-users-three"></i> ${data.teamTitle}`;
