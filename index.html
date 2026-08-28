@@ -378,7 +378,7 @@
     color: #86efac;
   }
 
-  /* ── SIDEBAR CONTACT BOX (NEW) ── */
+  /* ── SIDEBAR CONTACT BOX ── */
   .sidebar-contact-card {
     margin-top: 25px;
     padding: 16px;
@@ -1207,10 +1207,45 @@
     font-weight: 500;
   }
 
+  .footer-dev-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
   .footer-dev { 
     color: #86efac; 
     font-weight: 600; 
     font-size: 12.5px; 
+  }
+
+  .footer-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    font-family: inherit;
+  }
+
+  .footer-contact-btn:hover {
+    background: #10b981;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .footer-contact-btn i {
+    font-size: 14px;
   }
 
   /* ── KEYFRAMES ── */
@@ -1287,7 +1322,8 @@
     .footer-col-custom { align-items: center; }
     .viewer-counter-box { align-self: center; }
     .footer-row-top { grid-template-columns: 1fr; gap: 30px; }
-    .footer-rights { flex-direction: column !important; text-align: center; gap: 6px; }
+    .footer-rights { flex-direction: column !important; text-align: center; gap: 10px; }
+    .footer-dev-container { justify-content: center; }
 
     .sidebar {
       width: 320px;
@@ -1409,7 +1445,7 @@
     </li>
   </ul>
 
-  <div class="sidebar-contact-card">
+  <div class="sidebar-contact-card" id="sidebar-contact-card-box">
     <div class="contact-title" id="sb-contact-title">
       <i class="ph ph-address-book"></i> پەیوەندی
     </div>
@@ -1666,7 +1702,15 @@
 
     <div class="footer-rights">
       <div class="foot-rights-text" id="foot-rights">سەرجەم مافەکانی پارێزراوە © 2026</div>
-      <div class="footer-dev" id="foot-developer">ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد</div>
+      
+      <div class="footer-dev-container">
+        <!-- New Contact Link placed beside developer text -->
+        <button type="button" class="footer-contact-btn" id="foot-contact-btn" onclick="openSidebarAndScrollToContact()">
+          <i class="ph ph-address-book"></i>
+          <span id="foot-contact-txt">پەیوەندی</span>
+        </button>
+        <div class="footer-dev" id="foot-developer">ڕێکخەری زانستی و گەشەپێدەری وێب: پشتیوان عمر احمد</div>
+      </div>
     </div>
 
   </div>
@@ -1712,6 +1756,7 @@
       contactTitle: "پەیوەندی",
       contactRole: "ڕێکخەری زانستی و گەشەپێدەری وێب:",
       contactName: "پشتیوان عمر احمد",
+      footContactBtn: "پەیوەندی",
 
       footAcademic: `<div><span class="yellow-tag">• بەش :</span> ئینگلیزی</div>
                      <div><span class="yellow-tag">• کۆلێژ :</span> پەروەردە</div>
@@ -1759,6 +1804,7 @@
       contactTitle: "Contact Us",
       contactRole: "Scientific Coordinator & Web Dev:",
       contactName: "Pshtiwan Omer Ahmed",
+      footContactBtn: "Contact",
 
       footAcademic: `<div><span class="yellow-tag">• Department:</span> English</div>
                      <div><span class="yellow-tag">• College:</span> Education</div>
@@ -1806,6 +1852,7 @@
       contactTitle: "اتصل بنا",
       contactRole: "المنسق العلمي ومطور الموقع:",
       contactName: "پشتیوان عمر احمد",
+      footContactBtn: "اتصل بنا",
 
       footAcademic: `<div><span class="yellow-tag">• القسم :</span> اللغة الإنجليزية</div>
                      <div><span class="yellow-tag">• الكلية :</span> التربية</div>
@@ -1866,6 +1913,12 @@
     document.getElementById("foot-view-text").innerText = data.footViews;
     document.getElementById("foot-rights").innerText = data.footRights;
     document.getElementById("foot-developer").innerText = data.footDev;
+
+    // Footer Contact Button Text
+    const footContactTxt = document.getElementById("foot-contact-txt");
+    if (footContactTxt) {
+      footContactTxt.innerText = data.footContactBtn;
+    }
 
     // Sidebar Contact Texts
     const contactTitleEl = document.getElementById("sb-contact-title");
@@ -1996,6 +2049,16 @@
     document.body.classList.toggle("sidebar-open", shouldOpen);
 
     menuBtn.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+  }
+
+  function openSidebarAndScrollToContact() {
+    toggleSidebar(true);
+    setTimeout(() => {
+      const contactBox = document.getElementById("sidebar-contact-card-box");
+      if (contactBox) {
+        contactBox.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 250);
   }
 
   document.getElementById("menu-toggle").addEventListener("click", function() {
